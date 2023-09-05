@@ -34,7 +34,7 @@ function Header() {
   const siteTitle = siteTitleData?.generalSettings?.title; // Access the site title
 
   return (
-    <header className="flex relative inset-x-0 top-0 z-50 py-8 px-5 gap-20 sm:px-16 lg:px-40 border items-center">
+    <header className="flex relative inset-x-0 top-0 z-50 py-8 px-5 gap-20 sm:px-16 lg:px-40 items-center">
       <Head>
         <title>
           {title} - {siteTitle}

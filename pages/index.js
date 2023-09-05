@@ -5,12 +5,15 @@ import ClientsShowcase from "../components/modules/ClientsShowcase";
 import Intro from "../components/modules/Intro";
 
 function Homepage() {
-  const { loading, error, data } = useQuery(GETHomepageData);
+  const { error, data } = useQuery(GETHomepageData);
 
-  if (loading) return <p>Loading...</p>;
   if (error) {
     console.error("GraphQL Error:", error);
     return <p>Error: {error.message}</p>;
+  }
+
+  if (!data || !data.page || !data.page.homepage) {
+    return null; // Handle the case where data is not available
   }
 
   const { homepage } = data.page;

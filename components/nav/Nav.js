@@ -3,12 +3,11 @@ import GET_MENU_ITEMS from "../../graphql/menu.graphql";
 import Link from "next/link";
 
 function Menu() {
-  const { loading, error, data } = useQuery(GET_MENU_ITEMS);
+  const { error, data } = useQuery(GET_MENU_ITEMS);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const menuItems = data.menuItems.nodes;
+  const menuItems = data ? data.menuItems.nodes : [];
 
   return (
     <nav className="flex items-center justify-center">
