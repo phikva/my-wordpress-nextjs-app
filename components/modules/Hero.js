@@ -12,7 +12,7 @@ function Hero({ data }) {
   const remainingWords = words.slice(1, -2).join(" ");
 
   return (
-    <section className="bg-white border pb-10 px-5 sm:px-16 lg:px-40 xl:pb-24">
+    <section className="bg-white pb-10 px-5 sm:px-16 lg:px-40 xl:pb-24">
       <aside className="flex py-16 ">
         <div
           className="border rounded-full p-2"
