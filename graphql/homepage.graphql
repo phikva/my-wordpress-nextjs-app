@@ -1,0 +1,78 @@
+query GetHomepageData {
+  page(id: "\"cG9zdDo3\"") {
+    id
+    homepage {
+      hero {
+        headline
+        subheadline
+        mainImg {
+          altText
+          sourceUrl
+        }
+        cta {
+          title
+          url
+          target
+        }
+        ctaSecondary {
+          title
+          url
+          target
+        }
+      }
+      clients {
+        images {
+          first {
+            altText
+            sourceUrl
+          }
+          second {
+            altText
+            sourceUrl
+          }
+          third {
+            altText
+            sourceUrl
+          }
+          fourth {
+            altText
+            sourceUrl
+          }
+          fifth {
+            altText
+            sourceUrl
+          }
+          sixth {
+            altText
+            sourceUrl
+          }
+          seventh {
+            altText
+            sourceUrl
+          }
+          eighth {
+            altText
+            sourceUrl
+          }
+          ninth {
+            altText
+            sourceUrl
+          }
+          tenth {
+            altText
+            sourceUrl
+          }
+        }
+      }
+      intro {
+        headline
+        subheadline
+        ctaSecondary {
+          title
+          url
+        }
+      }
+    }
+    title
+  }
+}

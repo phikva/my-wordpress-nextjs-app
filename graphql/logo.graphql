@@ -1,0 +1,11 @@
+query GetLogo {
+  page(id: "\"cG9zdDo3\"") {
+    id
+    header {
+      logo {
+        altText
+        sourceUrl
+      }
+    }
+  }
+}

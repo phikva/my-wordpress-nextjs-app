@@ -1,0 +1,16 @@
+query GetMenuItems {
+  menuItems {
+    nodes {
+      id
+      label
+      url
+      childItems {
+        nodes {
+          id
+          label
+          url
+        }
+      }
+    }
+  }
+}
