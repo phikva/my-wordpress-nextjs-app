@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../ui/Button";
 import ButtonSecondary from "../ui/ButtonSecondary";
+import Image from "next/image";
 
 function Hero({ data }) {
   const { headline, subheadline, mainImg, cta, ctaSecondary } = data;
@@ -52,10 +53,12 @@ function Hero({ data }) {
         </div>
 
         <div className="flex justify-center items-center py-10 md:py-22">
-          <img
+          <Image
             className="h-auto rounded-lg"
             src={mainImg.sourceUrl}
             alt={mainImg.altText}
+            height={1000}
+            width={1000}
           />
         </div>
       </div>

@@ -19,13 +19,17 @@ function Intro({ data }) {
         </div>
       </aside>
       <div className="flex flex-col gap-10 w-full justify-center">
-        <h3 className=" text-center text-5xl leading-2 md:text-7xl lg:text-8xl xl:leading-2 xl:max-w-screen-xl xl:mx-auto">{headline}</h3>
-        <p className="text-xl font-light text-center xl:max-w-screen-lg xl:mx-auto">{subheadline}</p>
+        <h3 className=" text-center text-5xl leading-2 md:text-7xl lg:text-8xl xl:leading-2 xl:max-w-screen-xl xl:mx-auto">
+          {headline}
+        </h3>
+        <p className="text-xl font-light text-center xl:max-w-screen-lg xl:mx-auto">
+          {subheadline}
+        </p>
         <div className="flex flex-col gap-4 md:flex-row md:justify-center mt-4">
-        <ButtonSecondary
-          label={ctaSecondary.title}
-          onClick={() => (window.location.href = ctaSecondary.url)}
-        />
+          <ButtonSecondary
+            label={ctaSecondary.title}
+            onClick={() => (window.location.href = ctaSecondary.url)}
+          />
         </div>
       </div>
     </section>

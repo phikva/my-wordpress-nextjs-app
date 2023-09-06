@@ -1,5 +1,6 @@
 // components/modules/ClientsShowcase.js
 import React from "react";
+import Image from "next/image";
 
 function ClientsShowcase({ data }) {
   const clients = data.page.homepage.clients; // Extract clients data
@@ -34,11 +35,12 @@ function ClientsShowcase({ data }) {
         <div className="grid grid-cols-2 gap-5 md:grid-cols-5 lg:grid-cols-5 lg:gap-10">
           {validImages.map((image, index) => (
             <div key={index} className="text-center">
-              {/* Need to fix Next image components */}
-              <img
+              <Image
                 src={image.sourceUrl}
                 alt={image.altText}
                 className="mx-auto opacity-60  object-contain"
+                height={250}
+                width={250}
               />
             </div>
           ))}
