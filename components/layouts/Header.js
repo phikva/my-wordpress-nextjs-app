@@ -41,7 +41,7 @@ function Header() {
         </title>
       </Head>
       <Link href="/">
-        <img src={sourceUrl} alt={altText}  />
+        <img src={sourceUrl} alt={altText} />
       </Link>
 
       <Nav />
