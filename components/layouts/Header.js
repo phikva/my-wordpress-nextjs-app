@@ -1,4 +1,3 @@
-// components/Header.js
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import GET_LOGO from "../../graphql/logo.graphql";
@@ -16,9 +15,6 @@ function Header() {
   const router = useRouter();
   const { setSeoData } = useSeo();
 
-  const { query } = router;
-  const pageId = query.pageId || "cG9zdDo3";
-
   // Combine queries into a single query to reduce requests
   const { data } = useQuery(GET_LOGO, {
     fetchPolicy: "cache-first",
@@ -28,13 +24,13 @@ function Header() {
     fetchPolicy: "cache-first",
   });
 
-  const { data: pageData } = useQuery(GET_TITLE, {
-    variables: { pageId },
+  const { data: pageTitleData } = useQuery(GET_TITLE, {
+    variables: { pageId: router.query.pageId || "cG9zdDo3" },
     fetchPolicy: "cache-first",
   });
 
   const { data: pageDescriptionData } = useQuery(GET_PAGE_DESCRIPTION, {
-    variables: { pageId },
+    variables: { pageId: router.query.pageId || "cG9zdDo3" },
     fetchPolicy: "cache-first",
   });
 
@@ -46,8 +42,10 @@ function Header() {
   // Extract the site title from the query result
   const siteTitle = siteTitleData?.generalSettings?.title;
 
-  // Extract the page title and description from the query result
-  const pageTitle = pageData?.page?.title;
+  // Extract the page title from the query result
+  const pageTitle = pageTitleData?.page?.title;
+
+  // Extract the page description from the query result
   const pageDescription =
     pageDescriptionData?.page?.template?.pageDescription?.description;
 
