@@ -1,16 +1,14 @@
-import Hero from "../components/modules/Hero";
+import React from "react";
 import { useQuery } from "@apollo/client";
 import GETHomepageData from "../graphql/homepage.graphql";
+import Hero from "../components/modules/Hero";
 import ClientsShowcase from "../components/modules/ClientsShowcase";
 import Intro from "../components/modules/Intro";
 
 function Homepage() {
-  const { error, data } = useQuery(GETHomepageData);
-
-  if (error) {
-    console.error("GraphQL Error:", error);
-    return <p>Error: {error.message}</p>;
-  }
+  const { data } = useQuery(GETHomepageData, {
+    fetchPolicy: "cache-first", // Cache data for faster subsequent visits
+  });
 
   if (!data || !data.page || !data.page.homepage) {
     return null; // Handle the case where data is not available
