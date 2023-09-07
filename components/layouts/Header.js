@@ -7,7 +7,7 @@ import GET_PAGE_TITLE_PAGE_DESC from "../../graphql/pageTitlePageDesc.graphql"; 
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { useSeo } from "../../context/seo";
+import { useSeo } from "../../context/Seo";
 import SeoHead from "../seoHead/SeoHead";
 
 function Header() {
