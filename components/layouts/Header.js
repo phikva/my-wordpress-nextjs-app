@@ -1,15 +1,16 @@
 // components/Header.js
-import Nav from "../nav/Nav";
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import GET_LOGO from "../../graphql/logo.graphql";
+import GET_TITLE from "../../graphql/pageTitle.graphql";
 import GET_SITE_TITLE from "../../graphql/siteTitle.graphql";
-import GET_PAGE_DESCRIPTION from "../../graphql/pageDescription.graphql"; // Import the new query
+import GET_PAGE_DESCRIPTION from "../../graphql/pageDescription.graphql";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useSeo } from "../../context/seo";
+import Nav from "../nav/Nav";
 
 function Header() {
   const router = useRouter();
@@ -20,10 +21,15 @@ function Header() {
 
   // Combine queries into a single query to reduce requests
   const { data } = useQuery(GET_LOGO, {
-    fetchPolicy: "cache-first", // Cache data for better performance
+    fetchPolicy: "cache-first",
   });
 
   const { data: siteTitleData } = useQuery(GET_SITE_TITLE, {
+    fetchPolicy: "cache-first",
+  });
+
+  const { data: pageData } = useQuery(GET_TITLE, {
+    variables: { pageId },
     fetchPolicy: "cache-first",
   });
 
@@ -40,26 +46,32 @@ function Header() {
   // Extract the site title from the query result
   const siteTitle = siteTitleData?.generalSettings?.title;
 
-  // Extract the page description from the query result
+  // Extract the page title and description from the query result
+  const pageTitle = pageData?.page?.title;
   const pageDescription =
     pageDescriptionData?.page?.template?.pageDescription?.description;
 
   useEffect(() => {
     // Set SEO data dynamically including the page description
     setSeoData({
-      title: `${siteTitle} - ${pageDescription || ""}`,
-      description: pageDescription || "Default description if none is available",
+      title: `${siteTitle} - ${pageTitle || ""}`,
+      description:
+        pageDescription || "Default description if none is available",
     });
-  }, [siteTitle, setSeoData, pageDescription]);
+  }, [siteTitle, pageTitle, setSeoData, pageDescription]);
 
   return (
     <header className="flex relative inset-x-0 top-0 z-50 py-8 px-5 gap-20 sm:px-16 lg:px-40 items-center">
       <Head>
         {/* The title and description will be set dynamically */}
-        <title>{siteTitle} - {pageDescription || ""}</title>
+        <title>
+          {siteTitle} - {pageTitle || ""}
+        </title>
         <meta
           name="description"
-          content={pageDescription || "Default description if none is available"}
+          content={
+            pageDescription || "Default description if none is available"
+          }
         />
       </Head>
       <Link href="/">
