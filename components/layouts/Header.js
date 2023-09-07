@@ -1,5 +1,5 @@
 // components/Header.js
-import Nav from "./Nav";
+import Nav from "../nav/Nav";
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import GET_LOGO from "../../graphql/logo.graphql";
