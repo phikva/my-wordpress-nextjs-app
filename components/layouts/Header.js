@@ -1,3 +1,4 @@
+import Nav from "../nav/Nav";
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import GET_LOGO from "../../graphql/logo.graphql";
@@ -5,19 +6,21 @@ import GET_TITLE from "../../graphql/pageTitle.graphql";
 import GET_SITE_TITLE from "../../graphql/siteTitle.graphql";
 import GET_PAGE_DESCRIPTION from "../../graphql/pageDescription.graphql";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useSeo } from "../../context/seo";
-import Nav from "../nav/Nav";
+import SeoHead from "../seoHead/SeoHead";
 
 function Header() {
   const router = useRouter();
   const { setSeoData } = useSeo();
 
+  const { query } = router;
+  const pageId = query.pageId || "cG9zdDo3"; // Default pageId
+
   // Combine queries into a single query to reduce requests
   const { data } = useQuery(GET_LOGO, {
-    fetchPolicy: "cache-first",
+    fetchPolicy: "cache-first", // Cache data for better performance
   });
 
   const { data: siteTitleData } = useQuery(GET_SITE_TITLE, {
@@ -25,12 +28,12 @@ function Header() {
   });
 
   const { data: pageTitleData } = useQuery(GET_TITLE, {
-    variables: { pageId: router.query.pageId || "cG9zdDo3" },
+    variables: { pageId }, // Use the pageId from the route
     fetchPolicy: "cache-first",
   });
 
   const { data: pageDescriptionData } = useQuery(GET_PAGE_DESCRIPTION, {
-    variables: { pageId: router.query.pageId || "cG9zdDo3" },
+    variables: { pageId }, // Use the pageId from the route
     fetchPolicy: "cache-first",
   });
 
@@ -52,7 +55,7 @@ function Header() {
   useEffect(() => {
     // Set SEO data dynamically including the page description
     setSeoData({
-      title: `${siteTitle} - ${pageTitle || ""}`,
+      title: `${pageTitle || ""} - ${siteTitle}`,
       description:
         pageDescription || "Default description if none is available",
     });
@@ -60,18 +63,7 @@ function Header() {
 
   return (
     <header className="flex relative inset-x-0 top-0 z-50 py-8 px-5 gap-20 sm:px-16 lg:px-40 items-center">
-      <Head>
-        {/* The title and description will be set dynamically */}
-        <title>
-          {siteTitle} - {pageTitle || ""}
-        </title>
-        <meta
-          name="description"
-          content={
-            pageDescription || "Default description if none is available"
-          }
-        />
-      </Head>
+      <SeoHead title={`${pageTitle || ""} - ${siteTitle}`} description={pageDescription || ""} />
       <Link href="/">
         <Image
           src={sourceUrl}
@@ -81,7 +73,6 @@ function Header() {
           loading="lazy"
         />
       </Link>
-
       <Nav />
     </header>
   );

@@ -7,15 +7,15 @@ import Intro from "../components/modules/Intro";
 
 function Homepage() {
   const { data } = useQuery(GETHomepageData, {
-    fetchPolicy: "cache-first", // Cache data for faster subsequent visits
+    fetchPolicy: "cache-first",
   });
 
   if (!data || !data.page || !data.page.homepage) {
-    return null; // Handle the case where data is not available
+    return null;
   }
 
   const { homepage } = data.page;
-  const { clientsShowcase } = homepage; // Extract clientsShowcase data
+  const { clientsShowcase } = homepage;
 
   return (
     <>
