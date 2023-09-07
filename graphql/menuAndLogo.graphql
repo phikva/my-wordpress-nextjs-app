@@ -1,0 +1,25 @@
+query GetMenuAndLogo {
+  menuItems {
+    nodes {
+      id
+      label
+      url
+      childItems {
+        nodes {
+          id
+          label
+          url
+        }
+      }
+    }
+  }
+  page(id: "cG9zdDo3") {
+    id
+    header {
+      logo {
+        altText
+        sourceUrl
+      }
+    }
+  }
+}

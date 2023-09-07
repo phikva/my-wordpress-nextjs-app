@@ -1,5 +1,0 @@
-query GetTitle($pageId: ID!) {
-  page(id: $pageId) {
-    title
-  }
-}

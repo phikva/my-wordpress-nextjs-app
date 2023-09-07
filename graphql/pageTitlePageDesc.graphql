@@ -1,0 +1,37 @@
+# query GetPageTitlePageDesc($pageId: ID!) {
+#   page(id: $pageId)  {
+#     template {
+#       ... on DefaultTemplate {
+#         templateName
+#         pageTitle {
+#           title
+#         }
+#         pageDescription {
+#           description
+#         }
+#       }
+#     }
+#   }
+# }
+
+query GetPageTitlePageDesc($uri: String!) {
+  node(id: $uri) {
+    ... on Page {
+      id
+      template {
+        ... on DefaultTemplate {
+          templateName
+          pageTitle {
+            title
+          }
+          pageDescription {
+            description
+          }
+        }
+      }
+      slug
+      uri
+    }
+  }
+}
+
