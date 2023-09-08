@@ -1,42 +1,40 @@
+import React from "react";
 import { useQuery } from "@apollo/client";
-import GET_MENU_AND_LOGO from "../../graphql/menuAndLogo.graphql"; // Updated query import
-import Link from "next/link";
-import Image from "next/image";
+import GetMenuData from "../../graphql/GetMenuData.graphql";
 
-function Menu() {
-  const { error, data } = useQuery(GET_MENU_AND_LOGO); // Use the combined query
+function Nav({ menuSelection }) {
+  // Fetch the menu data based on the GraphQL query
+  const { data, loading, error } = useQuery(GetMenuData);
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) {
+    // Handle loading state
+    return <p>Loading menu...</p>;
+  }
 
-  const menuItems = data ? data.menuItems.nodes : [];
-  const logo = data?.page?.header?.logo;
+  if (error) {
+    // Handle error state
+    console.error("GraphQL Error:", error);
+    return <p>Error loading data.</p>;
+  }
+
+  const menus = data?.menus?.nodes || [];
+
+  // Find the menu based on menuSelection
+  const selectedMenu = menus.find((menu) => menu.name === menuSelection);
+
+  if (!selectedMenu) {
+    // Handle the case where the menuSelection doesn't match any menu
+    return <p>No menu found for the selected menuSelection.</p>;
+  }
+
+  const menuItems = selectedMenu.menuItems?.nodes || [];
 
   return (
-    <nav className="flex items-center justify-between w-full">
-      {logo && (
-        <Link href="/">
-          <Image src={logo.sourceUrl} alt={logo.altText} width={200} height={100} />
-        </Link>
-      )}
-      <ul className="flex space-x-10 font-semibold">
-        {menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.childItems.nodes.length > 0 ? (
-              <>
-                <span className="text-black text-lg">{menuItem.label}</span>
-                <ul>
-                  {menuItem.childItems.nodes.map((childItem) => (
-                    <li key={childItem.id}>
-                      <Link href={childItem.url}>
-                        <a className="text-black text-lg">{childItem.label}</a>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <Link href={menuItem.url}>{menuItem.label}</Link>
-            )}
+    <nav>
+      <ul>
+        {menuItems.map((menuItem, index) => (
+          <li key={index}>
+            <a href={menuItem.url}>{menuItem.label}</a>
           </li>
         ))}
       </ul>
@@ -44,4 +42,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default Nav;

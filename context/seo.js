@@ -24,7 +24,7 @@ export function SeoProvider({ children }) {
   }, [title, description]);
 
   // Define a function to update SEO data
-  const setSeoData = ({ title, description }) => {
+  const setSeoData = ({ title, description}) => {
     setTitle(title);
     setDescription(description);
   };

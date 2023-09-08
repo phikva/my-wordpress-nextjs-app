@@ -2,11 +2,16 @@ import React from "react";
 import ButtonSecondary from "../ui/ButtonSecondary";
 
 function Intro({ data }) {
+  // Check if data.intro exists before accessing its properties
+  if (!data || !data.intro) {
+    return null;
+  }
+
   const { headline, subheadline, ctaSecondary } = data.intro;
 
   return (
     <section className="bg-white px-5 py-20 sm:px-16 pt-14 lg:px-40 md:pt-20 lg:py-40">
-      <aside className="flex py-10 ">
+      <aside className="flex py-10">
         <div
           className="border rounded-full p-2"
           style={{

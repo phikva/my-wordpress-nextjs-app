@@ -1,0 +1,32 @@
+query GetFooterData {
+  page(id: "cG9zdDo3") {
+    id
+    title
+    footer {
+      companyInformation
+      copyrightTrademarkText
+      fieldGroupName
+      logoVariantFooter
+      newsletterSignupForm
+      alternativeLogoImageFooter {
+        altText
+        sourceUrl
+      }
+      defaultLogoImageFooter {
+        altText
+        sourceUrl
+      }
+      footerNavigation {
+        navigationLabel
+        navigationUrl
+      }
+      socialMediaLinks {
+        iconsocialMediaUrl
+        socialMediaIcon {
+          altText
+          sourceUrl
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import GetAboutPageData from "../../graphql/aboutpage.graphql";
 import Hero from "../../components/modules/Hero";
 
+
 function AboutPage() {
   const { data } = useQuery(GetAboutPageData, {
     fetchPolicy: "cache-first",

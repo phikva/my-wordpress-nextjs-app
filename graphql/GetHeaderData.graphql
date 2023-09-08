@@ -1,0 +1,28 @@
+query GetHeaderData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    template {
+      ... on DefaultTemplate {
+        templateName
+        header {
+          fieldGroupName
+          logoVariantHeader
+          defaultLogoImageHeader {
+            altText
+            sourceUrl
+          }
+          alternativeLogoImageHeader {
+            altText
+            sourceUrl
+          }
+          pageDescription
+          pageTitle
+          tagline
+          footerCode
+          headerCode
+          menuSelection
+        }
+      }
+    }
+  }
+}

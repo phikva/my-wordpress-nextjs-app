@@ -1,12 +1,10 @@
-query GetMenuItems {
-  menuItems {
+query GetMenuData {
+  menus {
     nodes {
       id
-      label
-      url
-      childItems {
+      name
+      menuItems {
         nodes {
-          id
           label
           url
         }
