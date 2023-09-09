@@ -1,0 +1,67 @@
+query GetHeroData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    hero {
+      toggleHeroSection
+      hero {
+        mainHeadline
+        subheadline
+        video {
+          altText
+          sourceUrl
+        }
+        image {
+          altText
+          sourceUrl
+        }
+        numberOfCtas
+        primaryButton {
+          buttonText
+          linkType
+          url
+          pageLink {
+            ... on Page {
+              id
+              uri
+            }
+          }
+        }
+        secondaryButton {
+          buttonText
+          linkType
+          url
+          pageLink {
+            ... on Page {
+              id
+              uri
+            }
+          }
+        }
+        ctaButtons {
+          primaryButton {
+            buttonText
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
+          secondaryButton {
+            buttonText
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

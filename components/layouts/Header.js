@@ -3,12 +3,13 @@ import SeoHead from "../seoHead/SeoHead";
 import { useSeo } from "../../context/Seo";
 import Nav from "../nav/Nav";
 import Image from "next/image";
+import Link from "next/link";
 
 function Header({ headerData }) {
   const { seoData } = useSeo();
 
-  //render the logo based on the selection
-  const header = headerData?.pageBy?.template?.header || {}; // Access the header object
+  // Render the logo based on the selection
+  const header = headerData?.pageBy.header || {}; // Access the header object directly
   const selectedLogoHeader =
     header.logoVariantHeader === "Default Header"
       ? header.defaultLogoImageHeader?.sourceUrl || ""
@@ -20,18 +21,14 @@ function Header({ headerData }) {
       : header.alternativeLogoImageHeader?.altText || "";
 
   const seoTitle =
-    headerData?.pageBy.template?.header?.pageTitle ||
-    (seoData ? seoData.defaultTitle : "");
+    header.pageTitle || (seoData ? seoData.defaultTitle : "");
   const seoDescription =
-    headerData?.pageBy.template?.header?.pageDescription ||
-    (seoData ? seoData.defaultDescription : "");
+    header.pageDescription || (seoData ? seoData.defaultDescription : "");
   const seoTagline =
-    headerData?.pageBy.template?.header?.tagline ||
-    (seoData ? seoData.defaultTagline : "");
+    header.tagline || (seoData ? seoData.defaultTagline : "");
 
-  //check if menu exists
-  const menuSelection =
-    headerData?.pageBy.template?.header?.menuSelection || "";
+  // Check if menu exists
+  const menuSelection = header.menuSelection || "";
 
   return (
     <header>
@@ -40,13 +37,15 @@ function Header({ headerData }) {
         description={seoDescription}
       />
       {selectedLogoHeader && (
-        <Image
-          src={selectedLogoHeader}
-          alt={altTextHeader}
-          className="logo"
-          width={200}
-          height={100}
-        />
+        <Link href="/">
+          <Image
+            src={selectedLogoHeader}
+            alt={altTextHeader}
+            className="logo"
+            width={200}
+            height={100}
+          />
+        </Link>
       )}
       {menuSelection && <Nav menuSelection={menuSelection} />}
     </header>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function Footer({ footerData }) {
   const footer = footerData?.page.footer || {}; // Access the footer object
@@ -19,12 +20,14 @@ function Footer({ footerData }) {
     <footer className="bg-purple">
       <div className="footer-logo">
         {selectedLogoFooter && (
+          <Link href="/">
           <Image
             src={selectedLogoFooter}
             alt={altTextFooter}
             width={200}
             height={100}
           />
+          </Link>
         )}
       </div>
       {footerData?.page?.footer?.footerNavigation && (
