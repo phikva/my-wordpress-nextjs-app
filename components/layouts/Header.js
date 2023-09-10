@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SeoHead from "../seoHead/SeoHead";
 import { useSeo } from "../../context/Seo";
-import Nav from "../nav/Nav";
 import Link from "next/link";
-import CustomImage from "../modules/CustomImage";
 import Button from "../ui/Button";
+import NavDesktop from "../nav/NavDesktop";
+import NavMobile from "../nav/NavMobile";
+import HamburgerButton from "../ui/HamburgerButton";
+import { useQuery } from "@apollo/client";
+import GetMenuData from "../../graphql/GetMenuData.graphql";
+import CustomImage from "../modules/CustomImage";
 
 function Header({ headerData }) {
   const { seoData } = useSeo();
 
-  const header = headerData?.pageBy.header || {}; 
+  const header = headerData?.pageBy.header || {};
+  const menuSelection = header.menuSelection || "";
+
+  const { data, loading, error } = useQuery(GetMenuData);
+
+  // State to track mobile menu visibility
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   // Check which logo should be displayed
   const selectedLogoHeader =
@@ -27,39 +38,98 @@ function Header({ headerData }) {
     header.pageDescription || (seoData ? seoData.defaultDescription : "");
   const seoTagline = header.tagline || (seoData ? seoData.defaultTagline : "");
 
-  const menuSelection = header.menuSelection || "";
+  // Function to toggle mobile menu visibility
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   // Check if header button should be displayed
-  const shouldDisplayButton =
-    headerData?.pageBy.header.toggleButton !== "Hide";
+  const shouldDisplayButton = headerData?.pageBy.header.toggleButton !== "Hide";
 
   // Define primaryButton data or null if not available
   const primaryButton = shouldDisplayButton ? header.headerCta : null;
 
-  return (
-    <header>
-      <SeoHead
-        title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
-        description={seoDescription}
-      />
-      {selectedLogoHeader && (
-        <Link href="/">
-          <CustomImage
-            src={selectedLogoHeader}
-            alt={altTextHeader}
-            className="logo"
-            width={200}
-            height={100}
-          />
-        </Link>
-      )}
-      {menuSelection && <Nav menuSelection={menuSelection} />}
+  // Detect if the viewport is in mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768); // Adjust the breakpoint as needed
+    };
 
-      {primaryButton && (
-        <Button label={header.headerCta.buttonText} link={header.headerCta} />
-      )}
-    </header>
-  );
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let content = null;
+
+  if (loading) {
+    // Handle loading state
+    content = <p>Loading menu...</p>;
+  } else if (error) {
+    // Handle error state
+    console.error("GraphQL Error:", error);
+    content = <p>Error loading data.</p>;
+  } else {
+    const menus = data?.menus?.nodes || [];
+
+    // Find the menu based on menuSelection
+    const selectedMenu = menus.find((menu) => menu.name === menuSelection);
+
+    if (!selectedMenu) {
+      // Handle the case where the menuSelection doesn't match any menu
+      content = <p>No menu found for the selected menuSelection.</p>;
+    } else {
+      const menuItems = selectedMenu.menuItems?.nodes || [];
+
+      content = (
+        <div className="bg-white text-white py-4">
+          <SeoHead
+            title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
+            description={seoDescription}
+          />
+          <div className="container mx-auto flex justify-between items-center">
+            {selectedLogoHeader && (
+              <Link href="/">
+                <CustomImage
+                  src={selectedLogoHeader}
+                  alt={altTextHeader}
+                  className="w-20 h-10 cursor-pointer"
+                  width={200}
+                  height={100}
+                />
+              </Link>
+            )}
+            {menuSelection && (
+              <>
+                {/* Mobile menu button/icon */}
+                {isMobileView ? (
+                  <HamburgerButton onClick={toggleMobileMenu} />
+                ) : (
+                  <NavDesktop menuItems={menuItems} />
+                )}
+                {isMobileMenuOpen && isMobileView && (
+                  <NavMobile menuItems={menuItems} onClose={toggleMobileMenu} />
+                )}
+              </>
+            )}
+
+            {primaryButton && (
+              <Button
+                label={header.headerCta.buttonText}
+                link={header.headerCta}
+              />
+            )}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  return content;
 }
 
 export default Header;
