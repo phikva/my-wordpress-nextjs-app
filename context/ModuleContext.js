@@ -7,18 +7,22 @@ export function useModuleContext() {
 }
 
 export function ModuleProvider({ children }) {
-  const [toggleHeroSection, setToggleHeroSection] = useState("Hide");
-  const [toggleMarqueeSection, setToggleMarqueeSection] = useState("Hide");
- 
+  // Create a state object to manage module states dynamically
+  const [moduleStates, setModuleStates] = useState({});
+
+  // Create a function to update the state of a specific module
+  const updateModuleState = (moduleName, newState) => {
+    setModuleStates((prevModuleStates) => ({
+      ...prevModuleStates,
+      [moduleName]: newState,
+    }));
+  };
 
   return (
     <ModuleContext.Provider
       value={{
-        toggleHeroSection,
-        setToggleHeroSection,
-        toggleMarqueeSection,
-        setToggleMarqueeSection,
-
+        moduleStates,
+        updateModuleState,
       }}
     >
       {children}
