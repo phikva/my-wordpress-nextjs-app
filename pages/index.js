@@ -2,18 +2,14 @@ import React from "react";
 import ACFModule from "../components/modules/AcfModule";
 
 function Homepage() {
+  // Define an array of module types available on the homepage
+  const moduleTypes = ["hero", "marquee"]; // Add more types as needed
 
-// Define your module data here or fetch it from a data source
-const moduleData = {
-  type: "hero", // Example type, adjust as needed
-  // Other module properties...
-};
   return (
     <>
-      <ACFModule module={moduleData} />
+      <ACFModule moduleTypes={moduleTypes} />
     </>
   );
 }
 
 export default Homepage;
-

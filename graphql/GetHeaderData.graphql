@@ -18,6 +18,17 @@ query GetHeaderData($uri: String = "/") {
       footerCode
       headerCode
       menuSelection
+      toggleButton
+      headerCta {
+        buttonText
+        linkType
+        pageLink {
+          ... on Page {
+            id
+            uri
+          }
+        }
+      }
     }
   }
 }

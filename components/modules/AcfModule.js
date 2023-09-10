@@ -1,38 +1,76 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { withRouter } from "next/router";
 import Hero from "./Hero";
+import Marquee from "./Marquee";
 import { GetHeroData } from "../../graphql/GetHeroData.graphql";
+import { GetMarqueeData } from "../../graphql/GetMarqueeData.graphql";
+import { useModuleContext } from "../../context/ModuleContext";
+import { withRouter } from "next/router"; // Import withRouter
 
-function ACFModule({ module, router }) {
-  const { query } = router;
-  const currentPageURI = query.slug ? `/${query.slug.join("/")}` : "/";
+function ACFModule({ moduleTypes, router }) {
+  const { setToggleHeroSection, setToggleMarqueeSection } = useModuleContext();
+  const currentPageURI = router.asPath; // Use router.asPath to get the current URI
 
-  const { data, loading, error } = useQuery(GetHeroData, {
+  // Fetch both GetHeroData and GetMarqueeData queries
+  const {
+    data: heroData,
+    loading: heroLoading,
+    error: heroError,
+  } = useQuery(GetHeroData, {
     variables: { uri: currentPageURI },
   });
 
-  if (loading) {
-    return null;
-  }
+  const {
+    data: marqueeData,
+    loading: marqueeLoading,
+    error: marqueeError,
+  } = useQuery(GetMarqueeData, {
+    variables: { uri: currentPageURI },
+  });
 
-  if (error) {
-    console.error("GraphQL Error:", error);
-    return null;
-  }
+  // Assuming your GraphQL queries include the user's toggle settings for hero and marquee modules
+  const userHeroToggle = heroData?.pageBy?.hero?.toggleHeroSection;
+  const userMarqueeToggle = marqueeData?.pageBy?.marquee?.toggleMarquee;
 
-  const heroData = data?.pageBy?.hero;
-console.log("module:", module.type)
-  switch (module.type) {
-    case "hero":
-      return <Hero data={heroData} />;
-    case "feature":
-      // Add logic for rendering the 'feature' module here
-    case "testimonial":
-      // Add logic for rendering the 'testimonial' module here
-    default:
-      return null;
-  }
+  const { toggleHeroSection, toggleMarqueeSection } = useModuleContext();
+
+  const renderModule = () => {
+    const renderedModules = []; // Create an array to collect rendered modules
+
+    for (const moduleType of moduleTypes) {
+      switch (moduleType) {
+        case "hero":
+          // Check if "hero" module should be displayed
+          if (
+            moduleType === "hero" &&
+            (userHeroToggle === "Show" || toggleHeroSection === "Show")
+          ) {
+            renderedModules.push(
+              <Hero key="hero" data={heroData?.pageBy?.hero} />
+            );
+          }
+          break;
+        case "marquee":
+          // Check if "marquee" module should be displayed
+          if (
+            moduleType === "marquee" &&
+            (userMarqueeToggle === "Show" || toggleMarqueeSection === "Show")
+          ) {
+            renderedModules.push(
+              <Marquee key="marquee" data={marqueeData?.pageBy?.marquee} />
+            );
+          }
+          break;
+        // Add more cases for other module types if needed
+        default:
+          break;
+      }
+    }
+
+    return renderedModules;
+  };
+
+  return <>{renderModule()}</>;
 }
 
-export default withRouter(ACFModule);
+export default withRouter(ACFModule); // Wrap ACFModule with withRouter

@@ -1,0 +1,15 @@
+query GetMarqueeData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    uri
+    marquee {
+      toggleMarquee
+      images {
+        image {
+          altText
+          sourceUrl
+        }
+      }
+    }
+  }
+}

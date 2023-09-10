@@ -2,14 +2,16 @@ import React from "react";
 import SeoHead from "../seoHead/SeoHead";
 import { useSeo } from "../../context/Seo";
 import Nav from "../nav/Nav";
-import Image from "next/image";
 import Link from "next/link";
+import CustomImage from "../modules/CustomImage";
+import Button from "../ui/Button";
 
 function Header({ headerData }) {
   const { seoData } = useSeo();
 
-  // Render the logo based on the selection
-  const header = headerData?.pageBy.header || {}; // Access the header object directly
+  const header = headerData?.pageBy.header || {}; 
+
+  // Check which logo should be displayed
   const selectedLogoHeader =
     header.logoVariantHeader === "Default Header"
       ? header.defaultLogoImageHeader?.sourceUrl || ""
@@ -20,15 +22,19 @@ function Header({ headerData }) {
       ? header.defaultLogoImageHeader?.altText || ""
       : header.alternativeLogoImageHeader?.altText || "";
 
-  const seoTitle =
-    header.pageTitle || (seoData ? seoData.defaultTitle : "");
+  const seoTitle = header.pageTitle || (seoData ? seoData.defaultTitle : "");
   const seoDescription =
     header.pageDescription || (seoData ? seoData.defaultDescription : "");
-  const seoTagline =
-    header.tagline || (seoData ? seoData.defaultTagline : "");
+  const seoTagline = header.tagline || (seoData ? seoData.defaultTagline : "");
 
-  // Check if menu exists
   const menuSelection = header.menuSelection || "";
+
+  // Check if header button should be displayed
+  const shouldDisplayButton =
+    headerData?.pageBy.header.toggleButton !== "Hide";
+
+  // Define primaryButton data or null if not available
+  const primaryButton = shouldDisplayButton ? header.headerCta : null;
 
   return (
     <header>
@@ -38,7 +44,7 @@ function Header({ headerData }) {
       />
       {selectedLogoHeader && (
         <Link href="/">
-          <Image
+          <CustomImage
             src={selectedLogoHeader}
             alt={altTextHeader}
             className="logo"
@@ -48,6 +54,10 @@ function Header({ headerData }) {
         </Link>
       )}
       {menuSelection && <Nav menuSelection={menuSelection} />}
+
+      {primaryButton && (
+        <Button label={header.headerCta.buttonText} link={header.headerCta} />
+      )}
     </header>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CustomImage from "../modules/CustomImage";
 
 function Footer({ footerData }) {
   const footer = footerData?.page.footer || {}; // Access the footer object
@@ -51,7 +52,7 @@ function Footer({ footerData }) {
         {footerData?.page?.footer?.socialMediaLinks &&
           footerData.page?.footer.socialMediaLinks.map((item, index) => (
             <a key={index} href={item.iconsocialMediaUrl}>
-              <Image
+              <CustomImage
                 src={item.socialMediaIcon.sourceUrl}
                 alt={item.socialMediaIcon.altText}
                 height={40}

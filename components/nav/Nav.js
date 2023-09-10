@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import GetMenuData from "../../graphql/GetMenuData.graphql";
+import Button from "../ui/Button";
 
-function Nav({ menuSelection }) {
+function Nav({ menuSelection}) {
   // Fetch the menu data based on the GraphQL query
   const { data, loading, error } = useQuery(GetMenuData);
 
