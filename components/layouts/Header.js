@@ -86,12 +86,12 @@ function Header({ headerData }) {
       const menuItems = selectedMenu.menuItems?.nodes || [];
 
       content = (
-        <header className="bg-white text-white py-4 px-4 md:px-16 xl:px-32 ">
+        <header className="bg-white sticky top-0 border-b border-gray-light text-white py-4 px-4 ">
           <SeoHead
             title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
             description={seoDescription}
           />
-          <div className="flex md:flex-row justify-between items-center">
+          <div className="flex md:flex-row justify-between items-center mx-auto w-full md:max-w-7xl">
             {selectedLogoHeader && (
               <Link href="/">
                 <CustomImage
@@ -100,7 +100,7 @@ function Header({ headerData }) {
                   className={`cursor-pointer ${
                     isMobileView ? "w-16 h-8" : "w-20 h-10"
                   }`}
-                  width={isMobileView ? 150 : 200}
+                  width={isMobileView ? 120 : 200}
                   height={isMobileView ? 100 : 100}
                 />
               </Link>
@@ -108,7 +108,7 @@ function Header({ headerData }) {
 
             {menuSelection && (
               <div
-                className={`md:text-center order-last ${
+                className={`md:text-center order-last  ${
                   isMobileView ? "md:w-full" : "md:w-2/5"
                 }`}
               >

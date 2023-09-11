@@ -11,8 +11,8 @@ function Hero({ data }) {
   const numberOfCtas = hero?.numberOfCtas;
 
   return (
-    <section className="flex flex-col lg:flex-row items-center lg:items-start justify-between py-16 md:py-32 xl:py-40 px-4 md:px-16 xl:px-32">
-      <div className="flex flex-col gap-3 lg:gap-10 lg:w-1/2 lg:order-1 xl:pb-20">
+    <section className="flex flex-col items-center text-center lg:items-start justify-between py-32 px-4 mx-auto w-full md:px-0 md:max-w-7xl">
+      <div className="flex flex-col gap-3 lg:gap-10 lg:order-1 xl:pb-20 mx-auto">
         <h1 className="text-5xl md:text-6xl xl:text-6xl font-regular mb-4">
           {hero?.mainHeadline.split(" ").map((word, index) => (
             <span key={index}>
@@ -37,7 +37,7 @@ function Hero({ data }) {
           />
         )}
         {numberOfCtas === "Two CTAs (Primary and Secondary buttons)" && (
-          <div className="flex flex-col gap-5 md:flex-row">
+          <div className="flex flex-col gap-5 md:flex-row md:mx-auto">
             <Button
               label={hero.ctaButtons.primaryButton.buttonText}
               link={hero.ctaButtons.primaryButton}
@@ -52,7 +52,7 @@ function Hero({ data }) {
 
       {/* Conditional rendering based on displayType */}
       {displayType === "Image" && (
-        <div className="flex xl:w-[40%] lg:order-2 mt-10 xl:mt-0 overflow-hidden xl:ml-20">
+        <div className="flex lg:order-2 mt-10 xl:mt-0 overflow-hidden mx-auto">
           <CustomImage
             src={hero.image.sourceUrl}
             alt={hero.image.altText}

@@ -1,0 +1,23 @@
+query GetFeaturedData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    uri
+    featured {
+      toggleFeatured
+      featuredSection {
+        header
+        subheader
+        tabGroup {
+          content {
+            tabHeader
+            tabText
+            tabImage {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+}

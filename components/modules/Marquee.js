@@ -5,6 +5,8 @@ import { useModuleContext } from "../../context/ModuleContext";
 function Marquee({ data }) {
   // Check if data exists before accessing its properties
   const images = data?.images || [];
+  const toggleText = data?.toggleText || "Hide"; // Default to "hide" if toggleText is not defined
+
 
   // Calculate the number of columns based on the number of images
   const numImages = images.length;
@@ -30,9 +32,17 @@ function Marquee({ data }) {
 
   return (
     <section className="px-4 bg-gray-dark py-10 md:py-20 lg:py-20">
+      {toggleText === "Show" && (
+        <div className="pb-16">
+        <h3 className="text-xl text-center text-white opacity-50">
+          {data.header}
+        </h3>
+        </div>
+      )}
+
       <div className="container mx-auto">
         <div
-          className={`grid grid-cols-2 gap-5 md:grid-cols-${numCols} lg:grid-cols-4 lg:gap-10`}
+          className={`grid grid-cols-2 gap-5 md:grid-cols-${numCols} lg:grid-cols-5 lg:gap-10 opacity-50`}
         >
           {images.map((image, index) => (
             <div
@@ -48,10 +58,9 @@ function Marquee({ data }) {
                 key={index}
                 src={image?.image?.sourceUrl}
                 alt={image?.image?.altText}
-                className=""
                 height={250}
                 width={250}
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                style={{ maxWidth: "100%", maxHeight: "100%"}}
               />
             </div>
           ))}

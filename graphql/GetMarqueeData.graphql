@@ -4,6 +4,8 @@ query GetMarqueeData($uri: String = "/") {
     uri
     marquee {
       toggleMarquee
+      toggleText
+      header
       images {
         image {
           altText

@@ -20,7 +20,7 @@ function Layout({ children, router }) {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
       {headerData && <Header headerData={headerData} />}
       <main className="flex-grow">{children}</main>
       {footerData && <Footer footerData={footerData} />}
