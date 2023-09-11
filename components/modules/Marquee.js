@@ -20,7 +20,7 @@ function Marquee({ data }) {
     itemSize = "calc(100% - 10px)"; // Adjust as needed
   } else if (numImages > 6) {
     numCols = 5;
-    itemSize = "calc(100% - 20px)"; // Adjust as needed
+    itemSize = "calc(100% - 5px)"; // Adjust as needed
   }
 
   // Centering styles
@@ -31,7 +31,7 @@ function Marquee({ data }) {
   };
 
   return (
-    <section className="px-4 bg-gray-dark py-10 md:py-20 lg:py-20">
+    <section className=" bg-gray-dark py-10 md:py-20 lg:py-20 ">
       {toggleText === "Show" && (
         <div className="pb-16">
         <h3 className="text-xl text-center text-white opacity-50">
@@ -40,7 +40,7 @@ function Marquee({ data }) {
         </div>
       )}
 
-      <div className="container mx-auto">
+      <div className="container mx-auto md:max-w-4xl">
         <div
           className={`grid grid-cols-2 gap-5 md:grid-cols-${numCols} lg:grid-cols-5 lg:gap-10 opacity-50`}
         >

@@ -13,8 +13,8 @@ function Featured({ data }) {
   };
 
   return (
-    <section className="px-4 py-10 md:py-20">
-      <div className="container mx-auto flex flex-col gap-10">
+    <section className="py-10 md:py-20">
+      <div className="flex flex-col gap-10">
         <div className="text-center">
         <h3 className="text-4xl font-semibold mb-6"> 
           {featuredSection.header}

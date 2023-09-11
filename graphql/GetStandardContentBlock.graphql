@@ -1,0 +1,40 @@
+query GetStandardContentBlock($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    uri
+    standardContentBlock {
+      toggleContentBlock
+      contentBlock {
+        chooseContentLayout
+        chooseBackgroundColor
+        leftAligned {
+          
+          headline
+          subheader
+          image {
+            altText
+            sourceUrl
+          }
+        }
+        rightAligned {
+          
+          headline
+          subheader
+          image {
+            altText
+            sourceUrl
+          }
+        }
+        centerAligned {
+         
+          headline
+          subheader
+          image {
+            altText
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}

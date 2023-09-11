@@ -86,12 +86,12 @@ function Header({ headerData }) {
       const menuItems = selectedMenu.menuItems?.nodes || [];
 
       content = (
-        <header className="bg-white sticky top-0 border-b border-gray-light text-white py-4 px-4 ">
+        <header className="bg-white sticky top-0 border-b border-gray-light text-white">
           <SeoHead
             title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
             description={seoDescription}
           />
-          <div className="flex md:flex-row justify-between items-center mx-auto w-full md:max-w-7xl">
+          <div className="flex md:flex-row justify-between items-center w-full">
             {selectedLogoHeader && (
               <Link href="/">
                 <CustomImage

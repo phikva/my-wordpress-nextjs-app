@@ -11,7 +11,7 @@ function Tab({ tabData, isActive, onClick }) {
         isActive
           ? "lg:bg-purple text-black lg:text-white "
           : "bg-gray-light text-black "
-      } p-4 rounded-lg shadow-md flex flex-col gap-5`}
+      } rounded-lg shadow-md flex flex-col gap-5`}
       onClick={onClick}
     >
       <div className="flex justify-between items-center">
