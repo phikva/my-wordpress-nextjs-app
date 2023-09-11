@@ -3,7 +3,7 @@ import React from "react";
 function Button({ label, link, className = "", isHeaderButton = false }) {
   // Define the class name for the button based on isHeaderButton
   const buttonClassName = isHeaderButton
-    ? "bg-black font-bold text-base text-white py-2 px-4 lg:py-3 lg:px-8 rounded-md hover:bg-blue-dark transition-all duration-300"
+    ? "bg-black font-medium text-base text-white py-2 px-4 rounded-md hover:bg-blue-dark transition-all duration-300"
     : `bg-purple font-bold text-base text-center border border-purple text-white py-3 px-8 rounded-md hover:bg-black hover:border-purple transition-all duration-300 ${className}`;
 
   // Check if linkType is "URL" and URL is provided

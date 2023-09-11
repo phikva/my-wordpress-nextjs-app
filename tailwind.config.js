@@ -9,13 +9,13 @@ module.exports = {
 	],
   theme: {
     colors: {
-      'white': '#fff',
+      'white': '#f2f2f2',
+      'white-light': '#ffffff',
       'purple': '#7e5bef',
-      'orange': '#f36458',
-      'gray-dark': '#101112',
-      'gray': '#8492a6',
+      'purple-dark': '#6C45ED',
+      'gray': '#F2F4F7',
       'gray-light': '#F5F5F5',
-      'black': '#000',
+      'black': '#2A2B27',
     },
     container: {
     },

@@ -18,8 +18,8 @@ function Footer({ footerData }) {
       : footer.alternativeLogoImageFooter?.altText || "";
 
   return (
-    <footer className="bg-purple py-16 px-4 lg:px-16">
-      <div className="container mx-auto flex flex-col gap-8">
+    <footer className="bg-purple py-16 px-4">
+      <div className="container mx-auto flex flex-col gap-8 max-w-6xl">
         <div className="flex flex-wrap">
           <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
             {selectedLogoFooter && (

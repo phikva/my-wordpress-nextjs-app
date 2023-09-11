@@ -12,7 +12,7 @@ function Hero({ data }) {
 
   return (
     <section className="flex flex-col items-center text-center lg:items-start justify-between py-32 px-4 mx-auto w-full md:px-0 md:max-w-4xl">
-      <div className="flex flex-col gap-3 lg:gap-10 lg:order-1 xl:pb-20 mx-auto">
+      <div className="flex flex-col gap-3 lg:gap-8 lg:order-1 xl:pb-20 mx-auto">
         <h1 className="text-5xl md:text-6xl xl:text-6xl font-regular mb-4">
           {hero?.mainHeadline.split(" ").map((word, index) => (
             <span key={index}>
@@ -21,7 +21,7 @@ function Hero({ data }) {
             </span>
           ))}
         </h1>
-        <p className="text-lg lg:text-xl mb-6 md:max-w-xl m-auto">{hero?.subheadline}</p>
+        <p className="text-lg lg:text-xl md:max-w-xl m-auto">{hero?.subheadline}</p>
 
         {/* Conditional rendering based on numberOfCtas */}
         {numberOfCtas === "One CTA (Primary Button)" && (

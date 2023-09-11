@@ -5,6 +5,7 @@ query GetFeaturedData($uri: String = "/") {
     featured {
       toggleFeatured
       featuredSection {
+        chooseBackgroundColor
         header
         subheader
         tabGroup {

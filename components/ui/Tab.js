@@ -2,21 +2,23 @@ import React from "react";
 import CustomImage from "../modules/CustomImage";
 import DynamicIcon from "../modules/DynamicIcon"; // Import the DynamicIcon component
 
-function Tab({ tabData, isActive, onClick }) {
-  const iconColor = isActive ? "lg:white" : "gray"; // Define the icon color based on isActive
+function Tab({ tabData, isActive, onClick, backgroundColorClass, textColorClass, tabBackgroundColorClass }) {
+  const iconColor = isActive ? textColorClass : textColorClass; // Define the icon color based on isActive
 
   return (
     <div
-      className={`cursor-pointer  ${
-        isActive
-          ? "lg:bg-purple text-black lg:text-white "
-          : "bg-gray-light text-black "
-      } rounded-lg shadow-md flex flex-col gap-5`}
+      className={`cursor-pointer rounded-lg shadow-md flex flex-col gap-5 p-10 ${
+        tabBackgroundColorClass // Apply the provided tab background color class
+      } ${
+        isActive ? textColorClass : textColorClass // Apply the provided text color class
+      }`}
       onClick={onClick}
     >
       <div className="flex justify-between items-center">
-        <div className="text-2xl font-semibold mb-2 ">{tabData.tabHeader}</div>
-        <div className="text-lg ">
+        <div className={`text-3xl font-normal mb-2 ${textColorClass}`}>
+          {tabData.tabHeader}
+        </div>
+        <div className={`text-lg ${textColorClass}`}>
           {/* Use DynamicIcon to display open and close icons */}
           <DynamicIcon
             icon={isActive ? "chevron-up" : "chevron-down"}
@@ -25,7 +27,10 @@ function Tab({ tabData, isActive, onClick }) {
           />
         </div>
       </div>
-      <p className={`${isActive ? "block" : "hidden"}`}>{tabData.tabText}</p>
+      {/* Hide tabText when not active */}
+      <p className={` ${isActive ? "block" : "hidden"} ${textColorClass} text-xl font-normal`}>
+        {tabData.tabText}
+      </p>
       <div
         className={`transition-max-h overflow-hidden ${
           isActive ? "max-h-96" : "max-h-0"

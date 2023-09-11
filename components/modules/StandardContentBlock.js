@@ -4,6 +4,7 @@ import CustomImage from "../modules/CustomImage";
 function StandardContentBlock({ data }) {
   const contentBlockData = data || {};
 
+
   // Check if toggleContentBlock is set to "Show"
   if (contentBlockData?.toggleContentBlock !== "Show") {
     return null; // Don't render anything if not set to "Show"
@@ -32,14 +33,34 @@ function StandardContentBlock({ data }) {
       contentBlock.chooseBackgroundColor
     );
 
+       // Define a function to get the text color class based on the background color
+       const getTextColorClass = (backgroundColorClass) => {
+        // If the background color is 'bg-black', set the text color to 'text-white'
+        if (backgroundColorClass === "bg-black") {
+          return "text-white";
+        }
+        if (backgroundColorClass === "bg-white") {
+            return "text-black";
+          }
+          if (backgroundColorClass === "bg-purple") {
+            return "text-white";
+          }
+        
+        // For other background colors, use the default text color
+        return "text-gray-700";
+      };
+
+      const textColorClass = getTextColorClass(backgroundColorClass);
+
     switch (contentBlock.chooseContentLayout) {
       case "Left aligned":
         return (
           <div
-            className={`content-block flex flex-col lg:flex-row items-center lg:items-start gap-x-10 gap-y-10 ${backgroundColorClass}`}
+            className={`flex justify-center ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="lg:w-1/2 order-2">
+            <div className="flex flex-col md:flex-row lg:flex-row max-w-7xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-32">
+            <div className="order-2  lg:w-1/2">
               <CustomImage
                 src={contentBlock.leftAligned.image.sourceUrl}
                 alt={contentBlock.leftAligned.image.altText}
@@ -49,32 +70,26 @@ function StandardContentBlock({ data }) {
                 className="w-full"
               />
             </div>
-            <div className="lg:w-1/2 order-1">
-              <h2 className="text-2xl font-bold mb-2">
+            <div className="md:w-3/4 lg:w-1/2 order-1">
+            <h2 className={`text-2xl font-bold mb-2 ${textColorClass}`}>
                 {contentBlock.leftAligned.headline}
               </h2>
-              <p className="text-gray-700">
+              <p className={`${textColorClass}`}>
                 {contentBlock.leftAligned.subheader}
               </p>
             </div>
+          </div>
           </div>
         );
 
       case "Right aligned":
         return (
           <div
-            className={`content-block flex flex-col lg:flex-row items-center lg:items-start gap-x-10 gap-y-10 ${backgroundColorClass}`}
+            className={` flex justify-center ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="lg:w-1/2 sm:order-1 lg:order-2">
-              <h2 className="text-2xl font-bold mb-2">
-                {contentBlock.rightAligned.headline}
-              </h2>
-              <p className="text-gray-700">
-                {contentBlock.rightAligned.subheader}
-              </p>
-            </div>
-            <div className="lg:w-1/2 sm:order-2 lg:order-1">
+            <div className="flex flex-col md:flex-row lg:flex-row max-w-7xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-32">
+            <div className="lg:w-1/2 order-2 md:order-1">
               <CustomImage
                 src={contentBlock.rightAligned.image.sourceUrl}
                 alt={contentBlock.rightAligned.image.altText}
@@ -84,16 +99,25 @@ function StandardContentBlock({ data }) {
                 className="w-full"
               />
             </div>
+            <div className="md:w-3/4  lg:w-1/2 order-1 md:order-2">
+            <h2 className={`text-2xl font-bold mb-2 ${textColorClass}`}>
+                {contentBlock.rightAligned.headline}
+              </h2>
+              <p className={`${textColorClass}`}>
+                {contentBlock.rightAligned.subheader}
+              </p>
+            </div>
+          </div>
           </div>
         );
 
       case "Center aligned":
         return (
           <div
-            className={`content-block flex flex-col lg:flex-row items-center lg:items-start gap-x-10 gap-y-10 px-4 ${backgroundColorClass}`}
+            className={`content-block flex flex-col items-center gap-x-10 gap-y-20 px-4 py-12 md:py-20 lg:py-32"  ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="order-2 m-auto">
+            <div className="lg:w-1/3 order-2">
               <CustomImage
                 src={contentBlock.centerAligned.image.sourceUrl}
                 alt={contentBlock.centerAligned.image.altText}
@@ -103,11 +127,11 @@ function StandardContentBlock({ data }) {
                 className="mx-auto"
               />
             </div>
-            <div className="lg:w-1/2 order-1 m-auto">
-              <h2 className="text-2xl font-bold mt-4">
+            <div className="lg:w-1/2 order-1 text-center">
+            <h2 className={`text-2xl font-bold mb-2 ${textColorClass}`}>
                 {contentBlock.centerAligned.headline}
               </h2>
-              <p className="text-gray-700">
+              <p className={`${textColorClass}`}>
                 {contentBlock.centerAligned.subheader}
               </p>
             </div>
