@@ -86,26 +86,33 @@ function Header({ headerData }) {
       const menuItems = selectedMenu.menuItems?.nodes || [];
 
       content = (
-        <div className="bg-white text-white py-4">
+        <header className="bg-white text-white py-4 px-4 md:px-16 xl:px-32 ">
           <SeoHead
             title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
             description={seoDescription}
           />
-          <div className="container mx-auto flex justify-between items-center">
+          <div className="flex md:flex-row justify-between items-center">
             {selectedLogoHeader && (
               <Link href="/">
                 <CustomImage
                   src={selectedLogoHeader}
                   alt={altTextHeader}
-                  className="w-20 h-10 cursor-pointer"
-                  width={200}
-                  height={100}
+                  className={`cursor-pointer ${
+                    isMobileView ? "w-16 h-8" : "w-20 h-10"
+                  }`}
+                  width={isMobileView ? 150 : 200}
+                  height={isMobileView ? 100 : 100}
                 />
               </Link>
             )}
+
             {menuSelection && (
-              <>
-                {/* Mobile menu button/icon */}
+              <div
+                className={`md:text-center order-last ${
+                  isMobileView ? "md:w-full" : "md:w-2/5"
+                }`}
+              >
+                {/* Menu */}
                 {isMobileView ? (
                   <HamburgerButton onClick={toggleMobileMenu} />
                 ) : (
@@ -114,17 +121,21 @@ function Header({ headerData }) {
                 {isMobileMenuOpen && isMobileView && (
                   <NavMobile menuItems={menuItems} onClose={toggleMobileMenu} />
                 )}
-              </>
+              </div>
             )}
 
             {primaryButton && (
-              <Button
-                label={header.headerCta.buttonText}
-                link={header.headerCta}
-              />
+              <div className="order-2 md:order-last">
+                {/* Header Button */}
+                <Button
+                  label={primaryButton.buttonText}
+                  link={primaryButton}
+                  isHeaderButton={true}
+                />
+              </div>
             )}
           </div>
-        </div>
+        </header>
       );
     }
   }

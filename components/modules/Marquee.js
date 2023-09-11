@@ -32,7 +32,7 @@ function Marquee({ data }) {
     <section className="px-4 bg-gray-dark py-10 md:py-20 lg:py-20">
       <div className="container mx-auto">
         <div
-          className={`grid grid-cols-2 gap-5 md:grid-cols-${numCols} lg:grid-cols-${numCols} lg:gap-10`}
+          className={`grid grid-cols-2 gap-5 md:grid-cols-${numCols} lg:grid-cols-4 lg:gap-10`}
         >
           {images.map((image, index) => (
             <div
