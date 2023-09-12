@@ -31,7 +31,7 @@ function Marquee({ data }) {
   };
 
   return (
-    <section className=" bg-black py-10 md:py-20 lg:py-20 ">
+    <section className=" bg-black px-4 py-10 md:py-20 lg:py-20 ">
       {toggleText === "Show" && (
         <div className="pb-16">
         <h3 className="text-xl text-center text-white opacity-50">

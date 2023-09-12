@@ -7,31 +7,185 @@ query GetStandardContentBlock($uri: String = "/") {
       contentBlock {
         chooseContentLayout
         chooseBackgroundColor
-        leftAligned {
-          
-          headline
+       leftAligned {
+          numberOfCtas
           subheader
+          headline
           image {
             altText
             sourceUrl
           }
+          ctaButtons {
+            primaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+            secondaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+          }
+          primaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
+          secondaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
         }
-        rightAligned {
-          
-          headline
+
+        
+         rightAligned {
+          numberOfCtas
           subheader
+          headline
           image {
             altText
             sourceUrl
           }
+          ctaButtons {
+            primaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+            secondaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+          }
+          primaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
+          secondaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
         }
+
+
         centerAligned {
-         
-          headline
+          numberOfCtas
           subheader
+          headline
           image {
             altText
             sourceUrl
+          }
+          ctaButtons {
+            primaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+            secondaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+          }
+          primaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
+          }
+          secondaryButton {
+            buttonText
+            fieldGroupName
+            linkType
+            url
+            pageLink {
+              ... on Page {
+                id
+                uri
+              }
+            }
           }
         }
       }

@@ -6,15 +6,16 @@ import Hero from "./Hero";
 import Marquee from "./Marquee";
 import Featured from "./Featured";
 import StandardContentBlock from "./StandardContentBlock";
+import FlexibleLayout from "./FlexibleLayout";
 //import the queries
 import { GetHeroData } from "../../graphql/GetHeroData.graphql";
 import { GetMarqueeData } from "../../graphql/GetMarqueeData.graphql";
-import  { GetFeaturedData } from "../../graphql/GetFeaturedData.graphql";
+import { GetFeaturedData } from "../../graphql/GetFeaturedData.graphql";
 import { GetStandardContentBlock } from "../../graphql/GetStandardContentBlock.graphql";
+import { GetFlexibleLayout } from "../../graphql/GetFlexibleLayout.graphql";
 //import the context
 import { useModuleContext } from "../../context/ModuleContext";
 import { withRouter } from "next/router"; // Import withRouter
-
 
 function ACFModule({ moduleTypes, router }) {
   const { moduleStates, updateModuleState } = useModuleContext();
@@ -53,12 +54,24 @@ function ACFModule({ moduleTypes, router }) {
     variables: { uri: currentPageURI },
   });
 
+  const {
+    data: flexibleLayoutData,
+    loading: flexibleLayoutLoading,
+    error: flexibleLayoutError,
+  } = useQuery(GetFlexibleLayout, {
+    variables: { uri: currentPageURI },
+  });
+
+
+
   // Assuming your GraphQL queries include the user's toggle settings for hero and marquee modules
   const userHeroToggle = heroData?.pageBy?.hero?.toggleHeroSection;
   const userMarqueeToggle = marqueeData?.pageBy?.marquee?.toggleMarquee;
   const userFeaturedToggle = featuredData?.pageBy?.featured?.toggleFeatured;
-  const userContentBlockToggle = contentBlockData?.pageBy?.standardContentBlock?.toggleContentBlock;
- 
+  const userContentBlockToggle =
+    contentBlockData?.pageBy?.standardContentBlock?.toggleContentBlock;
+  const userFlexibleContentToggle =
+    flexibleLayoutData?.pageBy.pageContent.togglePage;
 
   const renderModule = () => {
     const renderedModules = []; // Create an array to collect rendered modules
@@ -87,32 +100,47 @@ function ACFModule({ moduleTypes, router }) {
             );
           }
           break;
-          case "featured":
-            // Check if "featured" module should be displayed
-            if (
-              moduleType === "featured" &&
-              (userFeaturedToggle === "Show" || moduleStates.featured === "Show")
-            ) {
-              renderedModules.push(
-                <Featured key="featured" data={featuredData?.pageBy?.featured} />
-              );
-            }
-            break;
-            case "contentBlock":
+        case "featured":
+          // Check if "featured" module should be displayed
+          if (
+            moduleType === "featured" &&
+            (userFeaturedToggle === "Show" || moduleStates.featured === "Show")
+          ) {
+            renderedModules.push(
+              <Featured key="featured" data={featuredData?.pageBy?.featured} />
+            );
+          }
+          break;
+        case "contentBlock":
           // Check if "contentBlock" module should be displayed
           if (
             moduleType === "contentBlock" &&
-            (userContentBlockToggle === "Show" || moduleStates.contentBlock === "Show")
+            (userContentBlockToggle === "Show" ||
+              moduleStates.contentBlock === "Show")
           ) {
             renderedModules.push(
               <StandardContentBlock
                 key="contentBlock"
                 data={contentBlockData?.pageBy?.standardContentBlock}
               />
-              
             );
-        
           }
+          break;
+        case "flexibleLayout":
+          // Check if "flexibleLayout" module should be displayed
+          if (
+            moduleType === "flexibleLayout" &&
+            (userFlexibleContentToggle === "Show" ||
+              moduleStates.flexibleLayout === "Show")
+          ) {
+            renderedModules.push(
+              <FlexibleLayout
+                key="flexibleLayout"
+                data={flexibleLayoutData?.pageBy?.pageContent}
+              />
+            );
+          }
+          break;
 
         default:
           break;

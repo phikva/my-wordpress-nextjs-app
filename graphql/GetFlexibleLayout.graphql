@@ -1,0 +1,126 @@
+query GetFlexibleLayout($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    uri
+    pageContent {
+      togglePage
+      flexibleContent {
+        ... on Page_Pagecontent_FlexibleContent_FeaturedBlock {
+          fieldGroupName
+          toggleFeatured
+          featuredSection {
+            chooseBackgroundColor
+            fieldGroupName
+            header
+            subheader
+            tabGroup {
+              content {
+                tabText
+                tabHeader
+                tabImage {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+        ... on Page_Pagecontent_FlexibleContent_HeroBlock {
+          fieldGroupName
+          hero {
+            displayType
+            fieldGroupName
+            mainHeadline
+            numberOfCtas
+            subheadline
+            ctaButtons {
+              primaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+              }
+              secondaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+              }
+            }
+            image {
+              altText
+              sourceUrl
+            }
+            primaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+            }
+            secondaryButton {
+              buttonText
+              fieldGroupName
+              linkType
+              url
+            }
+            video {
+              altText
+              sourceUrl
+            }
+          }
+          toggleHeroSection
+        }
+        ... on Page_Pagecontent_FlexibleContent_MarqueeBlock {
+          fieldGroupName
+          header
+          toggleText
+          toggleMarquee
+          images {
+            fieldGroupName
+            image {
+              altText
+              sourceUrl
+            }
+          }
+        }
+        ... on Page_Pagecontent_FlexibleContent_ContentBlock {
+          fieldGroupName
+          toggleContentBlock
+          contentBlock {
+            chooseBackgroundColor
+            chooseContentLayout
+            fieldGroupName
+            centerAligned {
+              fieldGroupName
+              headline
+              subheader
+              image {
+                altText
+                sourceUrl
+              }
+            }
+            leftAligned {
+              fieldGroupName
+              headline
+              subheader
+              image {
+                id
+                altText
+                sourceUrl
+              }
+            }
+            rightAligned {
+              fieldGroupName
+              headline
+              subheader
+              image {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
