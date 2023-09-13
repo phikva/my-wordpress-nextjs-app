@@ -39,12 +39,24 @@ query GetFlexibleLayout($uri: String = "/") {
                 fieldGroupName
                 linkType
                 url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
               }
               secondaryButton {
                 buttonText
                 fieldGroupName
                 linkType
                 url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
               }
             }
             image {
@@ -56,12 +68,24 @@ query GetFlexibleLayout($uri: String = "/") {
               fieldGroupName
               linkType
               url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
             }
             secondaryButton {
               buttonText
               fieldGroupName
               linkType
               url
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
             }
             video {
               altText
@@ -91,6 +115,7 @@ query GetFlexibleLayout($uri: String = "/") {
             chooseContentLayout
             fieldGroupName
             centerAligned {
+              numberOfCtas
               fieldGroupName
               headline
               subheader
@@ -98,8 +123,59 @@ query GetFlexibleLayout($uri: String = "/") {
                 altText
                 sourceUrl
               }
+              ctaButtons {
+                primaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+                secondaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+              }
+              primaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+              }
+              secondaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+              }
             }
             leftAligned {
+              numberOfCtas
               fieldGroupName
               headline
               subheader
@@ -108,14 +184,115 @@ query GetFlexibleLayout($uri: String = "/") {
                 altText
                 sourceUrl
               }
+              ctaButtons {
+                primaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+                secondaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+              }
+              primaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+              }
+              secondaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+              }
             }
             rightAligned {
+              numberOfCtas
               fieldGroupName
               headline
               subheader
               image {
                 altText
                 sourceUrl
+              }
+              ctaButtons {
+                primaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+                secondaryButton {
+                  buttonText
+                  fieldGroupName
+                  linkType
+                  url
+                  pageLink {
+                    ... on Page {
+                      id
+                      uri
+                    }
+                  }
+                }
+              }
+              primaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+              }
+              secondaryButton {
+                buttonText
+                fieldGroupName
+                linkType
+                url
+                pageLink {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
               }
             }
           }
