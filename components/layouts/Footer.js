@@ -2,20 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CustomImage from "../modules/CustomImage";
+// import helper functions
+import { getSelectedLogo } from "../../utils/selectLogoUtils";
 
 function Footer({ footerData }) {
-  const footer = footerData?.page.footer || {}; // Access the footer object
+  // const footer = footerData?.page.footer || {}; // Access the footer object
 
-  // Select the logo based on the logo variant
-  const selectedLogoFooter =
-    footer.logoVariantFooter === "Default Footer"
-      ? footer.defaultLogoImageFooter?.sourceUrl || ""
-      : footer.alternativeLogoImageFooter?.sourceUrl || "";
-
-  const altTextFooter =
-    footer.logoVariantFooter === "Default Footer"
-      ? footer.defaultLogoImageFooter?.altText || ""
-      : footer.alternativeLogoImageFooter?.altText || "";
+  // helper function to select logo
+  const { selectedLogoFooter, altTextFooter } = getSelectedLogo({}, footerData);
 
   return (
     <footer className="bg-purple py-16 px-4">

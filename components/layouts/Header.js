@@ -1,47 +1,40 @@
 import React, { useState, useEffect } from "react";
+// seo related
 import SeoHead from "../seoHead/SeoHead";
 import { useSeo } from "../../context/Seo";
 import Link from "next/link";
+// import ui components
 import Button from "../ui/Button";
+import HamburgerButton from "../ui/HamburgerButton";
+// import nav components
 import NavDesktop from "../nav/NavDesktop";
 import NavMobile from "../nav/NavMobile";
-import HamburgerButton from "../ui/HamburgerButton";
+// import helper functions
+import { toggleMobileMenu } from "../../utils/menuUtils";
+import { handleResize } from "../../utils/windowUtils";
+import { getSelectedLogo } from "../../utils/selectLogoUtils";
+// import apollo client
 import { useQuery } from "@apollo/client";
+//get menu data from query
 import GetMenuData from "../../graphql/GetMenuData.graphql";
 import CustomImage from "../modules/CustomImage";
 
 function Header({ headerData }) {
   const { seoData } = useSeo();
-
   const header = headerData?.pageBy.header || {};
   const menuSelection = header.menuSelection || "";
-
+  // get menu data from query
   const { data, loading, error } = useQuery(GetMenuData);
 
   // State to track mobile menu visibility
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
 
-  // Check which logo should be displayed
-  const selectedLogoHeader =
-    header.logoVariantHeader === "Default Header"
-      ? header.defaultLogoImageHeader?.sourceUrl || ""
-      : header.alternativeLogoImageHeader?.sourceUrl || "";
-
-  const altTextHeader =
-    header.logoVariantHeader === "Default Header"
-      ? header.defaultLogoImageHeader?.altText || ""
-      : header.alternativeLogoImageHeader?.altText || "";
-
+  // seo related
   const seoTitle = header.pageTitle || (seoData ? seoData.defaultTitle : "");
   const seoDescription =
     header.pageDescription || (seoData ? seoData.defaultDescription : "");
   const seoTagline = header.tagline || (seoData ? seoData.defaultTagline : "");
-
-  // Function to toggle mobile menu visibility
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   // Check if header button should be displayed
   const shouldDisplayButton = headerData?.pageBy.header.toggleButton !== "Hide";
@@ -49,20 +42,18 @@ function Header({ headerData }) {
   // Define primaryButton data or null if not available
   const primaryButton = shouldDisplayButton ? header.headerCta : null;
 
-  // Detect if the viewport is in mobile view
+  // helper function to select logo
+  const { selectedLogoHeader, altTextHeader } = getSelectedLogo(headerData,{});
+
+  // helper function to determine if the window is mobile
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 768); // Adjust the breakpoint as needed
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    handleResize(setIsMobileView);
   }, []);
+
+  // helper function to toggle mobile menu
+  const toggleMobileMenuHandler = () => {
+    toggleMobileMenu(isMobileMenuOpen, setIsMobileMenuOpen);
+  };
 
   let content = null;
 
@@ -114,12 +105,15 @@ function Header({ headerData }) {
               >
                 {/* Menu */}
                 {isMobileView ? (
-                  <HamburgerButton onClick={toggleMobileMenu} />
+                  <HamburgerButton onClick={toggleMobileMenuHandler} />
                 ) : (
                   <NavDesktop menuItems={menuItems} />
                 )}
                 {isMobileMenuOpen && isMobileView && (
-                  <NavMobile menuItems={menuItems} onClose={toggleMobileMenu} />
+                  <NavMobile
+                    menuItems={menuItems}
+                    onClose={toggleMobileMenuHandler}
+                  />
                 )}
               </div>
             )}
