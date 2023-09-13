@@ -15,8 +15,6 @@ query GetHeaderData($uri: String = "/") {
       pageDescription
       pageTitle
       tagline
-      footerCode
-      headerCode
       menuSelection
       toggleButton
       headerCta {

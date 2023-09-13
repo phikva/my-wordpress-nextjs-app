@@ -105,7 +105,7 @@ function StandardContentBlock({ data }) {
                     alt={contentBlock.leftAligned.image.altText}
                     height={500}
                     width={500}
-                    layout="responsive"
+                    // layout="responsive"
                     className="w-full"
                   />
                 )}
@@ -137,7 +137,7 @@ function StandardContentBlock({ data }) {
                     alt={contentBlock.rightAligned.image.altText}
                     height={500}
                     width={500}
-                    layout="responsive"
+                    // layout="responsive"
                     className="w-full"
                   />
                 )}
@@ -168,7 +168,7 @@ function StandardContentBlock({ data }) {
                   alt={contentBlock.centerAligned.image.altText}
                   height={500}
                   width={500}
-                  layout="responsive"
+                  // layout="responsive"
                   className="mx-auto"
                 />
               )}
