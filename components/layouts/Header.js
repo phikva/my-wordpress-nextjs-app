@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
+
 // seo related
 import SeoHead from "../seoHead/SeoHead";
 import { useSeo } from "../../context/Seo";
 import Link from "next/link";
+
 // import ui components
 import Button from "../ui/Button";
 import HamburgerButton from "../ui/HamburgerButton";
+
 // import nav components
 import NavDesktop from "../nav/NavDesktop";
 import NavMobile from "../nav/NavMobile";
+
 // import helper functions
 import { toggleMobileMenu } from "../../utils/menuUtils";
 import { handleResize } from "../../utils/windowUtils";
 import { getSelectedLogo } from "../../utils/selectLogoUtils";
+
 // import apollo client
 import { useQuery } from "@apollo/client";
+
 //get menu data from query
 import GetMenuData from "../../graphql/GetMenuData.graphql";
 import CustomImage from "../modules/CustomImage";

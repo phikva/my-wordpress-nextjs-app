@@ -1,21 +1,26 @@
-// ACFModule.js
 import React from "react";
 import { useQuery } from "@apollo/client";
+
 //import the modules
 import Hero from "./Hero";
 import Marquee from "./Marquee";
 import Featured from "./Featured";
 import StandardContentBlock from "./StandardContentBlock";
 import FlexibleLayout from "./FlexibleLayout";
+
 //import the queries
 import { GetHeroData } from "../../graphql/GetHeroData.graphql";
 import { GetMarqueeData } from "../../graphql/GetMarqueeData.graphql";
 import { GetFeaturedData } from "../../graphql/GetFeaturedData.graphql";
 import { GetStandardContentBlock } from "../../graphql/GetStandardContentBlock.graphql";
 import { GetFlexibleLayout } from "../../graphql/GetFlexibleLayout.graphql";
+
 //import the context
 import { useModuleContext } from "../../context/ModuleContext";
 import { withRouter } from "next/router"; // Import withRouter
+
+//import helper functions
+import { getUserToggle } from "../../utils/userToggleUtils";
 
 function ACFModule({ moduleTypes, router }) {
   const { moduleStates, updateModuleState } = useModuleContext();
@@ -62,16 +67,32 @@ function ACFModule({ moduleTypes, router }) {
     variables: { uri: currentPageURI },
   });
 
-
-
-  // Assuming your GraphQL queries include the user's toggle settings for hero and marquee modules
-  const userHeroToggle = heroData?.pageBy?.hero?.toggleHeroSection;
-  const userMarqueeToggle = marqueeData?.pageBy?.marquee?.toggleMarquee;
-  const userFeaturedToggle = featuredData?.pageBy?.featured?.toggleFeatured;
-  const userContentBlockToggle =
-    contentBlockData?.pageBy?.standardContentBlock?.toggleContentBlock;
-  const userFlexibleContentToggle =
-    flexibleLayoutData?.pageBy.pageContent.togglePage;
+  // get user toggle value for each module
+  const userHeroToggle = getUserToggle(
+    heroData,
+    "hero", 
+    "toggleHeroSection"
+    );
+  const userMarqueeToggle = getUserToggle(
+    marqueeData,
+    "marquee",
+    "toggleMarquee"
+  );
+  const userFeaturedToggle = getUserToggle(
+    featuredData,
+    "featured",
+    "toggleFeatured"
+  );
+  const userContentBlockToggle = getUserToggle(
+    contentBlockData,
+    "standardContentBlock",
+    "toggleContentBlock"
+  );
+  const userFlexibleContentToggle = getUserToggle(
+    flexibleLayoutData,
+    "pageContent",
+    "togglePage"
+  );
 
   const renderModule = () => {
     const renderedModules = []; // Create an array to collect rendered modules
