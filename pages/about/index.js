@@ -3,7 +3,7 @@ import ACFModule from "../../components/modules/AcfModule";
 
 function AboutPage() {
   // Define an array of module types available on the About page
-  const moduleTypes = ["hero", "marquee"]; // Add more types as needed
+  const moduleTypes = ["hero", "marquee", "featured", "contentBlock", "flexibleLayout",]; // Add more types as needed
 
   return (
     <>

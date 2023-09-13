@@ -6,12 +6,12 @@ function Featured({ data }) {
   const featuredSection = data?.featuredSection || [];
   const tabGroup = featuredSection.tabGroup || [];
   const [selectedTab, setSelectedTab] = useState(0);
-  let backgroundColorClass = ""; //Define a variable for background color
-  let textColorClass = ""; // Define a variable for text color
-  let tabBackgroundColorClass = ""; // Define a variable for tab background color
-
 
   // Determine the background color class based on the user's selection
+  let backgroundColorClass = "";
+  let textColorClass = "";
+  let tabBackgroundColorClass = "";
+
   switch (featuredSection.chooseBackgroundColor) {
     case "Light":
       backgroundColorClass = "bg-white";
@@ -21,12 +21,12 @@ function Featured({ data }) {
     case "Dark":
       backgroundColorClass = "bg-black";
       textColorClass = "text-white";
-      tabBackgroundColorClass = "bg-purple";
+      tabBackgroundColorClass = "bg-black-light";
       break;
     case "Color":
       backgroundColorClass = "bg-purple";
       textColorClass = "text-white";
-      tabBackgroundColorClass = "bg-black";
+      tabBackgroundColorClass = "bg-purple-light";
       break;
     default:
       backgroundColorClass = "";
@@ -39,7 +39,7 @@ function Featured({ data }) {
   };
 
   return (
-    <section className={` py-10 md:py-28 flex justify-center ${backgroundColorClass}`}>
+    <section className={`py-10 md:py-28 flex justify-center ${backgroundColorClass}`}>
       <div className="flex flex-col gap-20 px-4 w-full max-w-7xl">
         <div className="text-center">
           <h3 className={`text-4xl font-semibold mb-6 ${textColorClass}`}>
@@ -59,15 +59,14 @@ function Featured({ data }) {
                   tabData={tab.content}
                   isActive={selectedTab === index}
                   onClick={() => handleTabClick(index)}
-                  backgroundColorClass={backgroundColorClass} // Pass background color class to Tab
-                  textColorClass={textColorClass} // Pass text color class to Tab
+                  backgroundColorClass={backgroundColorClass}
+                  textColorClass={textColorClass}
                   tabBackgroundColorClass={tabBackgroundColorClass}
                 />
               ))}
             </div>
           </div>
           <div className="hidden lg:flex lg:w-1/2 items-center mt-4">
-            <div className="flex-1">{/* Tab Image */}</div>
             <div className={`${selectedTab !== null ? "block" : "hidden"}`}>
               <CustomImage
                 src={tabGroup[selectedTab]?.content.tabImage.sourceUrl}

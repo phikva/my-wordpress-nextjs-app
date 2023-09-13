@@ -7,10 +7,10 @@ function Tab({ tabData, isActive, onClick, backgroundColorClass, textColorClass,
 
   return (
     <div
-      className={`cursor-pointer rounded-lg shadow-md flex flex-col gap-5 p-10 ${
+      className={`cursor-pointer flex flex-col rounded-lg border-1 overflow-hidden transition-colors duration-150 outline-none shadow-sm gap-5 p-10  ${
         tabBackgroundColorClass // Apply the provided tab background color class
       } ${
-        isActive ? textColorClass : textColorClass // Apply the provided text color class
+        isActive ? textColorClass : backgroundColorClass// Apply the provided text color class
       }`}
       onClick={onClick}
     >

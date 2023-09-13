@@ -26,7 +26,7 @@ function ACFModule({ moduleTypes, router }) {
   const { moduleStates, updateModuleState } = useModuleContext();
   const currentPageURI = router.asPath; // Use router.asPath to get the current URI
 
-  // Fetch data
+  // Fetch data for each module type
   const {
     data: heroData,
     loading: heroLoading,
@@ -67,7 +67,7 @@ function ACFModule({ moduleTypes, router }) {
     variables: { uri: currentPageURI },
   });
 
-  // get user toggle value for each module
+  // helper function to get user toggle value for each module
   const userHeroToggle = getUserToggle(
     heroData,
     "hero", 
@@ -94,8 +94,9 @@ function ACFModule({ moduleTypes, router }) {
     "togglePage"
   );
 
+  // Create an array to collect rendered modules
   const renderModule = () => {
-    const renderedModules = []; // Create an array to collect rendered modules
+    const renderedModules = [];
 
     for (const moduleType of moduleTypes) {
       switch (moduleType) {
