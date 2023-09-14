@@ -14,7 +14,6 @@ import { toggleMobileMenu } from "../../utils/menuUtils";
 import { handleResize } from "../../utils/windowUtils";
 import { getSelectedLogo } from "../../utils/selectLogoUtils";
 
-
 function Header({ headerData }) {
   const { seoData } = useSeo();
   const header = headerData?.pageBy.header || {};
@@ -33,8 +32,8 @@ function Header({ headerData }) {
   const toggleMobileMenuHandler = () => {
     toggleMobileMenu(isMobileMenuOpen, setIsMobileMenuOpen);
   };
-    // helper function to select logo
-    const { selectedLogoHeader, altTextHeader } = getSelectedLogo(headerData, {});
+  // helper function to select logo
+  const { selectedLogoHeader, altTextHeader } = getSelectedLogo(headerData);
 
   const selectedMenu = menus.find((menu) => menu.name === menuSelection);
 
@@ -53,8 +52,6 @@ function Header({ headerData }) {
 
   // Define primaryButton data or null if not available
   const primaryButton = shouldDisplayButton ? header.headerCta : null;
-
-
 
   return (
     <header className="bg-white-light sticky top-0 border-b border-gray-light text-white flex justify-center">

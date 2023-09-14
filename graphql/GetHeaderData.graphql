@@ -1,4 +1,5 @@
 query GetHeaderData($uri: String = "/") {
+  # get the menu items
   menus {
     nodes {
       id
@@ -13,6 +14,7 @@ query GetHeaderData($uri: String = "/") {
   }
   pageBy(uri: $uri) {
     id
+    # get the header data
     header {
       fieldGroupName
       logoVariantHeader
@@ -37,6 +39,37 @@ query GetHeaderData($uri: String = "/") {
             id
             uri
           }
+        }
+      }
+    }
+  }
+    page(id: "cG9zdDo3") {
+    id
+    title
+    # get the footer data
+    footer {
+      companyInformation
+      copyrightTrademarkText
+      fieldGroupName
+      logoVariantFooter
+      newsletterSignupForm
+      alternativeLogoImageFooter {
+        altText
+        sourceUrl
+      }
+      defaultLogoImageFooter {
+        altText
+        sourceUrl
+      }
+      footerNavigation {
+        navigationLabel
+        navigationUrl
+      }
+      socialMediaLinks {
+        iconsocialMediaUrl
+        socialMediaIcon {
+          altText
+          sourceUrl
         }
       }
     }

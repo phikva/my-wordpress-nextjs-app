@@ -111,10 +111,14 @@ function StandardContentBlock({ data }) {
                 )}
               </div>
               <div className="md:w-3/4 flex flex-col gap-5 lg:w-1/2 order-1">
-                <h2 className={`text-3xl md:text-4xl xl:text-5xl font-normal mb-2 ${textColorClass}`}>
+                <h2
+                  className={`text-3xl md:text-4xl xl:text-5xl font-normal mb-2 ${textColorClass}`}
+                >
                   {contentBlock.leftAligned.headline}
                 </h2>
-                <p className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}>
+                <p
+                  className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}
+                >
                   {contentBlock.leftAligned.subheader}
                 </p>
                 {buttons}
@@ -143,10 +147,14 @@ function StandardContentBlock({ data }) {
                 )}
               </div>
               <div className="md:w-3/4 flex flex-col gap-5   lg:w-1/2 order-1 md:order-2">
-                <h2 className={`text-3xl md:text-4xl xl:text-5xl mb-2  ${textColorClass}`}>
+                <h2
+                  className={`text-3xl md:text-4xl xl:text-5xl mb-2  ${textColorClass}`}
+                >
                   {contentBlock.rightAligned.headline}
                 </h2>
-                <p className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}>
+                <p
+                  className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}
+                >
                   {contentBlock.rightAligned.subheader}
                 </p>
                 {buttons}
@@ -174,10 +182,14 @@ function StandardContentBlock({ data }) {
               )}
             </div>
             <div className="lg:w-1/2 flex flex-col gap-5   order-1 text-center">
-              <h2 className={`text-3xl md:text-4xl xl:text-5xl mb-2 ${textColorClass}`}>
+              <h2
+                className={`text-3xl md:text-4xl xl:text-5xl mb-2 ${textColorClass}`}
+              >
                 {contentBlock.centerAligned.headline}
               </h2>
-              <p className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}>
+              <p
+                className={`${textColorClass} text-lg font-normal pb-8 lg-pb-0`}
+              >
                 {contentBlock.centerAligned.subheader}
               </p>
               {buttons}

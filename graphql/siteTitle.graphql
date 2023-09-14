@@ -1,5 +1,0 @@
-query GetSiteTitle {
-  generalSettings {
-    title
-  }
-}
