@@ -1,4 +1,16 @@
 query GetHeaderData($uri: String = "/") {
+  menus {
+    nodes {
+      id
+      name
+      menuItems {
+        nodes {
+          label
+          url
+        }
+      }
+    }
+  }
   pageBy(uri: $uri) {
     id
     header {
