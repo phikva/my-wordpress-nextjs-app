@@ -25,7 +25,9 @@ module.exports = {
        '1': '0.25px',
        '2': '1px',
      },
-
+     animation: {
+      'marquee-1': 'marquee-1 60s linear infinite',
+    },
     },
   },
   plugins: [require("tailwindcss-animate")],

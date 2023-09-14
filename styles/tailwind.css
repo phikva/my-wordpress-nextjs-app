@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes marquee-1 {
+  0% {
+    transform: translateX(0);
+}
+
+100% {
+    transform: translateX(-3400px);
+}
+}
  
 body,html {
   height: 100%;
