@@ -32,12 +32,12 @@ function Footer({ footerData }) {
                 <ul className="flex flex-col lg:flex-row lg:gap-5">
                   {footer.footerNavigation.map((item, index) => (
                     <li key={index} className="mb-2">
-                      <a
+                      <Link
                         href={item.navigationUrl}
                         className="text-sm hover:text-gray-400 transition-colors"
                       >
                         {item.navigationLabel}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -57,7 +57,7 @@ function Footer({ footerData }) {
           <div className="flex">
             {footer.socialMediaLinks &&
               footer.socialMediaLinks.map((item, index) => (
-                <a
+                <Link
                   key={index}
                   href={item.iconsocialMediaUrl}
                   className="mr-4 hover:text-gray-400 transition-colors"
@@ -68,7 +68,7 @@ function Footer({ footerData }) {
                     height={30}
                     width={30}
                   />
-                </a>
+                </Link>
               ))}
           </div>
           <div className="copyright-trademark text-sm">
