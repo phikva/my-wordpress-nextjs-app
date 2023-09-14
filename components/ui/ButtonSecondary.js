@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 function ButtonSecondary({
   label,
@@ -17,7 +18,7 @@ function ButtonSecondary({
   // Check if linkType is "URL" and URL is provided
   if (link.linkType === "URL" && link.url) {
     return (
-      <a
+      <Link
         href={link.url}
         className={
           isDynamicBackground
@@ -26,14 +27,14 @@ function ButtonSecondary({
         }
       >
         {label}
-      </a>
+      </Link>
     );
   }
 
   // Check if linkType is "Page Link" and pageLink is provided
   if (link.linkType === "Page Link" && link.pageLink && link.pageLink.uri) {
     return (
-      <a
+      <Link
         href={link.pageLink.uri}
         className={
           isDynamicBackground
@@ -42,18 +43,18 @@ function ButtonSecondary({
         }
       >
         {label}
-      </a>
+      </Link>
     );
   }
 
   // If neither condition is met, render a disabled button
   return (
-    <a
+    <Link
       className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
       disabled
     >
       {label}
-    </a>
+    </Link>
   );
 }
 
