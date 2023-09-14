@@ -2,19 +2,27 @@ import React from "react";
 import CustomImage from "../modules/CustomImage";
 import DynamicIcon from "../modules/DynamicIcon"; // Import the DynamicIcon component
 
-function Tab({ tabData, isActive, onClick, backgroundColorClass, textColorClass, tabBackgroundColorClass }) {
-  const iconColor = isActive ? textColorClass : textColorClass; // Define the icon color based on isActive
+function Tab({
+  tabData,
+  isActive,
+  onClick,
+  backgroundColorClass,
+  textColorClass,
+  tabBackgroundColorClass,
+
+}) {
+  const iconColor = isActive ? textColorClass : backgroundColorClass; // Define the icon color based on isActive
 
   return (
     <div
-      className={`cursor-pointer flex flex-col rounded-lg border-1 overflow-hidden transition-colors duration-150 outline-none shadow-sm gap-5 p-10  ${
+      className={`cursor-pointer flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
         tabBackgroundColorClass // Apply the provided tab background color class
       } ${
-        isActive ? textColorClass : backgroundColorClass// Apply the provided text color class
+        isActive ? tabBackgroundColorClass : backgroundColorClass // Apply the provided text color class
       }`}
       onClick={onClick}
     >
-      <div className="flex justify-between items-center">
+      <div className={`flex justify-between items-center`}>
         <div className={`text-3xl font-normal mb-2 ${textColorClass}`}>
           {tabData.tabHeader}
         </div>
@@ -28,7 +36,11 @@ function Tab({ tabData, isActive, onClick, backgroundColorClass, textColorClass,
         </div>
       </div>
       {/* Hide tabText when not active */}
-      <p className={` ${isActive ? "block" : "hidden"} ${textColorClass} text-xl font-normal`}>
+      <p
+        className={` ${
+          isActive ? "block" : "hidden"
+        } ${textColorClass} text-xl font-normal`}
+      >
         {tabData.tabText}
       </p>
       <div
@@ -39,7 +51,7 @@ function Tab({ tabData, isActive, onClick, backgroundColorClass, textColorClass,
         <CustomImage
           src={tabData.tabImage.sourceUrl}
           alt={tabData.tabImage.altText}
-          className="w-12 h-12 rounded-full object-cover"
+          className="w-12 h-12  object-cover"
           width={600}
           height={600}
         />

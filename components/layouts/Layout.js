@@ -9,7 +9,7 @@ function Layout({ children }) {
   const { headerData, currentPath } = useHeader();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="">
       <Suspense fallback={<p>Loading header data...</p>}>
         {headerData && <Header headerData={headerData} />}
       </Suspense>

@@ -32,6 +32,7 @@ module.exports = {
   },
   // Configure the domains allowed for images
   images: {
+    formats: ['image/webp'],
     domains: ["wordpress-starter.local", "wordpress-starter.flywheelsites.com"], // Add your image domain(s) here
   },
 };

@@ -7,14 +7,15 @@ function Button({
   className = "",
   isHeaderButton = false,
   isDynamicBackground = false,
+  backgroundColorClass = "", // Add backgroundColorClass prop
 }) {
   // Define the class name for the base button style
   const baseButtonClassName = isHeaderButton
-    ? "bg-white-light border-purple border text-black font-medium hover:opacity-50 text-base py-2 px-4 rounded-md transition-all duration-300"
-    : `font-bold text-base text-white bg-purple border-purple border text-center hover:opacity-50 py-3 px-8 rounded-md transition-all duration-300 ${className}`;
+    ? "border-black border text-black hover:opacity-50 text-xl py-2 px-6 transition-all duration-300"
+    : `text-xl text-white bg-black border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className}`;
 
   // Define the class name for the dynamic background button style
-  const dynamicBackgroundButtonClassName = `font-bold text-base ${className}`;
+  const dynamicBackgroundButtonClassName = `text-xl text-white border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here
 
   // Check if linkType is "URL" and URL is provided
   if (link.linkType === "URL" && link.url) {

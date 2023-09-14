@@ -3,16 +3,18 @@ import ReactPlayer from "react-player";
 
 function VideoPlayer({ url, width, height, alt }) {
   return (
+    <div style={{ position: 'relative', width, height }}>
       <ReactPlayer
         url={url}
         alt={alt}
         controls={false}
-        width={width}
-        height={height}
-        playing={true} // Use the playing prop for autoplay
-        muted={true}   // Add the muted attribute for autoplay
+        width="100%"
+        height="100%"
+        playing={true}
+        muted={true}
         loop={true}
       />
+    </div>
   );
 }
 

@@ -54,12 +54,12 @@ function Header({ headerData }) {
   const primaryButton = shouldDisplayButton ? header.headerCta : null;
 
   return (
-    <header className="bg-white-light sticky top-0 border-b border-gray-light text-white flex justify-center">
+    <header className="bg-white-light sticky top-0 border-b z-50 border-gray-light text-white">
       <SeoHead
         title={seoTagline ? `${seoTitle} - ${seoTagline}` : seoTitle}
         description={seoDescription}
       />
-      <div className="flex md:flex-row justify-between items-center w-full p-5 max-w-7xl">
+      <div className="p-5 flex items-center justify-between mx-auto max-w-8xl">
         {selectedLogoHeader && (
           <Link href="/">
             <CustomImage
@@ -77,7 +77,7 @@ function Header({ headerData }) {
         {menuSelection && (
           <div
             className={`md:text-center order-last  ${
-              isMobileView ? "md:w-full" : "md:w-2/5"
+              isMobileView ? "md:w-full" : ""
             }`}
           >
             {/* Menu */}

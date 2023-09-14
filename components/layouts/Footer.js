@@ -11,9 +11,9 @@ function Footer({ footerData }) {
   const { selectedLogoFooter, altTextFooter } = getSelectedLogo({},footerData);
 
   return (
-    <footer className="bg-purple py-16 px-4">
-      <div className="container mx-auto flex flex-col gap-8 max-w-6xl">
-        <div className="flex flex-wrap">
+    <footer className="bg-black py-16 px-4">
+      <div className="mx-auto flex flex-col gap-8 max-w-8xl">
+        <div className="grid grid-cols-2 gap-10">
           <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
             {selectedLogoFooter && (
               <Link href="/">
@@ -34,7 +34,7 @@ function Footer({ footerData }) {
                     <li key={index} className="mb-2">
                       <Link
                         href={item.navigationUrl}
-                        className="text-sm hover:text-gray-400 transition-colors"
+                        className="text-3xl md:text-5xl hover:text-gray-400 transition-colors"
                       >
                         {item.navigationLabel}
                       </Link>
@@ -45,7 +45,7 @@ function Footer({ footerData }) {
             )}
           </div>
           <div className="w-full lg:w-1/3">
-            <div className="text-white mb-6">
+            <div className="text-white mt-10 text-xl md:text-3xl ">
               {footer.companyInformation}
             </div>
             <div className="text-white mb-6">
@@ -53,7 +53,7 @@ function Footer({ footerData }) {
             </div>
           </div>
         </div>
-        <div className="text-white flex flex-col gap-8 items-center justify-between border-t border-gray-300 pt-10">
+        <div className="text-white grid grid-cols-2 pt-10">
           <div className="flex">
             {footer.socialMediaLinks &&
               footer.socialMediaLinks.map((item, index) => (
@@ -71,7 +71,7 @@ function Footer({ footerData }) {
                 </Link>
               ))}
           </div>
-          <div className="copyright-trademark text-sm">
+          <div className="copyright-trademark text-xl md:text-3xl">
             {footer.copyrightTrademarkText}
           </div>
         </div>

@@ -30,7 +30,7 @@ function StandardContentBlock({ data }) {
         case "Dark":
           return "bg-black";
         case "Color":
-          return "bg-purple";
+          return "bg-blue";
         default:
           return ""; // Default to no background color
       }
@@ -85,8 +85,8 @@ function StandardContentBlock({ data }) {
     const buttons = renderButtons(
       ctaButtons,
       numberOfCtas,
-      backgroundColorClass,
       true,
+      backgroundColorClass,
       contentBlock.chooseContentLayout
     );
 
@@ -97,7 +97,7 @@ function StandardContentBlock({ data }) {
             className={`flex justify-center ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="flex flex-col md:flex-row lg:flex-row max-w-7xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-32">
+            <div className="flex flex-col md:flex-row lg:flex-row max-w-8xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-48">
               <div className="order-2  lg:w-1/2">
                 {shouldRenderImage && (
                   <CustomImage
@@ -133,7 +133,7 @@ function StandardContentBlock({ data }) {
             className={` flex justify-center ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="flex flex-col md:flex-row lg:flex-row max-w-7xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-32">
+            <div className="flex flex-col md:flex-row lg:flex-row max-w-8xl gap-x-48 gap-y-10 px-4 py-12 md:py-20 lg:py-48">
               <div className="lg:w-1/2 order-2 md:order-1">
                 {shouldRenderImage && (
                   <CustomImage
@@ -166,7 +166,7 @@ function StandardContentBlock({ data }) {
       case "Center aligned":
         return (
           <div
-            className={`content-block flex flex-col items-center gap-x-10 gap-y-20 px-4 py-12 md:py-20 lg:py-32"  ${backgroundColorClass}`}
+            className={`content-block flex flex-col items-center gap-x-10 gap-y-20 px-4 py-12 md:py-20 lg:py-48"  ${backgroundColorClass}`}
             key={contentBlock.id}
           >
             <div className="lg:w-1/3 order-2">

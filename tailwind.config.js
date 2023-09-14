@@ -11,8 +11,8 @@ module.exports = {
     colors: {
       'white': '#f2f2f2',
       'white-light': '#ffffff',
-      'purple': '#7e5bef',
-      'purple-light': '#8A6AF0',
+      'blue': '#C2EFFF',
+      'blue-dark': '#DAF5FF',
       'gray': '#F2F4F7',
       'gray-light': '#F5F5F5',
       'black': '#2A2B27',
@@ -21,14 +21,25 @@ module.exports = {
     container: {
     },
     extend: {
-     borderWidth: {
-       '1': '0.25px',
-       '2': '1px',
-     },
-     animation: {
-      'marquee-1': 'marquee-1 60s linear infinite',
+      maxWidth: {
+        '8xl': '100rem',
+       
+      },
+      fontFamily: {
+        neueDisplayLight: ['neue-haas-grotesk-display', 'sans-serif', '400'],
+        neueDisplayBold: ['neue-haas-grotesk-display', 'sans-serif', '700'],
+        neueTextRoman: ['neue-haas-grotesk-text', 'sans-serif', '400'],
+        neueTextBold: ['neue-haas-grotesk-text', 'sans-serif', '700'],
+      },
+      borderWidth: {
+        '1': '0.25px',
+        '2': '1px',
+      },
+      animation: {
+        'marquee-1': 'marquee-1 60s linear infinite',
+      },
     },
-    },
+    
   },
   plugins: [require("tailwindcss-animate")],
 }

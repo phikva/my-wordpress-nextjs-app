@@ -10,24 +10,15 @@ function Hero({ data }) {
   const numberOfCtas = hero?.numberOfCtas;
 
   return (
-    <section className="flex flex-col items-center text-center lg:items-start justify-between pb-16 pt-16 md:pt-32 px-4 mx-auto w-full md:px-0 md:max-w-4xl">
-      <div className="flex flex-col gap-3 lg:gap-8 lg:order-1 xl:pb-20 mx-auto">
-        <h1 className="text-5xl md:text-6xl xl:text-6xl font-regular mb-4">
-          {hero?.mainHeadline.split(" ").map((word, index) => (
-            <span key={index}>
-              {index < 3 ? (
-                <strong className="font-black">{word}</strong>
-              ) : (
-                word
-              )}{" "}
-              {index < 2 ? " " : ""}
-            </span>
-          ))}
+    <section className="py-10 px-5 md:py-28 flex flex-col justify-center gap-10">
+      <div className="flex flex-col xl:px-6 w-full max-w-8xl mx-auto gap-6">
+        <h1 className="mb-4 max-w-2xl lg:max-w-5xl">
+          {hero?.mainHeadline}
         </h1>
-        <p className="text-lg lg:text-xl md:max-w-xl m-auto">
+        <p className="md:max-w-2xl">
           {hero?.subheadline}
         </p>
-        <div className="md:m-auto">
+        <div className="">
         {/* Render buttons using the renderButtons utility */}
         {renderButtons(
           hero?.ctaButtons,
@@ -36,11 +27,10 @@ function Hero({ data }) {
           true // isHero prop
         )}
         </div>
-      </div>
-
-      {/* Conditional rendering based on displayType */}
+         {/* Conditional rendering based on displayType */}
+      
       {displayType === "Image" && (
-        <div className="flex lg:order-2 mt-10 xl:mt-0 overflow-hidden mx-auto">
+        <div className="flex lg:order-2">
           <CustomImage
             src={hero.image.sourceUrl}
             alt={hero.image.altText}
@@ -52,16 +42,20 @@ function Hero({ data }) {
         </div>
       )}
       {displayType === "Video" && (
-        <div className="hero-media lg:w-1/2 lg:order-2 mb-4 lg:mb-0 relative">
-          <div className="video-overlay absolute inset-0 flex items-center justify-center">
+        <div className="hero-media lg:order-2 mt-4 lg:mb-0 relative">
+          <div className="">
             <VideoPlayer
               url={hero.video.mediaItemUrl}
               alt={hero.video.caption}
-              className="w-full h-full"
+              
+              
             />
           </div>
         </div>
       )}
+      </div>
+
+     
     </section>
   );
 }
