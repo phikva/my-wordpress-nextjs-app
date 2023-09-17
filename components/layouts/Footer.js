@@ -9,9 +9,9 @@ function Footer({ footerData }) {
 
   // Helper function to select logo
   const { selectedLogoFooter, altTextFooter } = getSelectedLogo({}, footerData);
-console.log(footer.socialMediaLinks);
+
   return (
-    <footer className="bg-black flex flex-row py-16 px-4 lg:px-0">
+    <footer className="bg-black flex flex-row py-16 px-4">
       <div className="gap-8 mx-auto max-w-8xl">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="w-full mb-6 lg:mb-0">

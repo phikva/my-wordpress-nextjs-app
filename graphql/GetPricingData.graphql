@@ -1,0 +1,29 @@
+query GetPricingData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    pricing {
+      toggle
+     headline
+      subheadline
+      pricingPlans {
+        planName
+        planDescription
+        price
+        benefits {
+          benefitItem
+        }
+        cta {
+          button
+           linkType
+           url
+          pageLink {
+            ... on Page {
+              id
+              uri
+            }
+          }
+        }
+      }
+    }
+  }
+}

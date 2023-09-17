@@ -12,7 +12,7 @@ function Button({
   // Define the class name for the base button style
   const baseButtonClassName = isHeaderButton
     ? "border-black border text-black hover:opacity-50 text-xl py-2 px-6 transition-all duration-300"
-    : ``;
+    : `text-black border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className}`;
 
   // Define the class name for the dynamic background button style
   const dynamicBackgroundButtonClassName = `text-xl text-white bg-black border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here

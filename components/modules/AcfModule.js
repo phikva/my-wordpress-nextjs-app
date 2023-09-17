@@ -7,6 +7,7 @@ import Marquee from "./Marquee";
 import Featured from "./Featured";
 import StandardContentBlock from "./StandardContentBlock";
 import FlexibleLayout from "./FlexibleLayout";
+import Price from "./Price";
 
 //import the queries
 import { GetHeroData } from "../../graphql/GetHeroData.graphql";
@@ -14,6 +15,7 @@ import { GetMarqueeData } from "../../graphql/GetMarqueeData.graphql";
 import { GetFeaturedData } from "../../graphql/GetFeaturedData.graphql";
 import { GetStandardContentBlock } from "../../graphql/GetStandardContentBlock.graphql";
 import { GetFlexibleLayout } from "../../graphql/GetFlexibleLayout.graphql";
+import { GetPricingData } from "../../graphql/GetPricingData.graphql";
 
 //import the context
 import { useModuleContext } from "../../context/ModuleContext";
@@ -66,13 +68,18 @@ function ACFModule({ moduleTypes, router }) {
   } = useQuery(GetFlexibleLayout, {
     variables: { uri: currentPageURI },
   });
+  const {
+    data: pricingData,
+    loading: pricingDataLoading,
+    error: pricingDataError,
+  } = useQuery(GetPricingData, {
+    variables: { uri: currentPageURI },
+  });
+
+  console.log(pricingData?.pageBy?.pricing.toggle); // Log the data before passing it to PriceComponent
 
   // helper function to get user toggle value for each module
-  const userHeroToggle = getUserToggle(
-    heroData,
-    "hero", 
-    "toggleHeroSection"
-    );
+  const userHeroToggle = getUserToggle(heroData, "hero", "toggleHeroSection");
   const userMarqueeToggle = getUserToggle(
     marqueeData,
     "marquee",
@@ -92,6 +99,10 @@ function ACFModule({ moduleTypes, router }) {
     flexibleLayoutData,
     "pageContent",
     "togglePage"
+  );
+  const userPricingToggle = getUserToggle(
+    pricingData, "pricing",
+     "toggle"
   );
 
   // Create an array to collect rendered modules
@@ -148,6 +159,18 @@ function ACFModule({ moduleTypes, router }) {
             );
           }
           break;
+        case "pricing":
+          // Check if "pricing" module should be displayed
+          if (
+            moduleType === "pricing" &&
+            (userPricingToggle === "Show" || moduleStates.pricing === "Show")
+          ) {
+            renderedModules.push(
+              <Price key="pricing" data={pricingData?.pageBy?.pricing} />
+            );
+          }
+          break;
+
         case "flexibleLayout":
           // Check if "flexibleLayout" module should be displayed
           if (
