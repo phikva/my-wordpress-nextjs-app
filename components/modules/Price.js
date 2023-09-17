@@ -36,11 +36,11 @@ function Price({ data }) {
       <div className="flex flex-row justify-center flex-wrap gap-20 lg:gap-10 mx-auto">
         {pricingPlans.map((plan, index) => (
           <div
-            className="flex flex-col justify-between gap-10 max-w-xs border border-black border-opacity-20 p-10"
+            className="flex flex-col justify-between gap-10 max-w-xs border border-black border-opacity-20 p-6"
             key={index}
           >
             <h3 className="font-bold text-center">{plan.planName}</h3>
-            <p className="text-black-light opacity-60 text-center">
+            <p className="text-black-light text-lg opacity-70 text-center">
               {plan.planDescription}
             </p>
             {/* Conditionally render the price */}
