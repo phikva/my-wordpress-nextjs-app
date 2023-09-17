@@ -5,14 +5,17 @@ function ButtonSecondary({
   label,
   link,
   className = "",
-  isDynamicBackground = false,
+  isDynamicBackground = true,
+  isHeaderButton = false,
   backgroundColorClass = "", // Add backgroundColorClass prop
 }) {
   // Define the class name for the base button style
-  const baseButtonClassName = `text-black border-black text-center text-xl hover:opacity-50 border py-3 px-8 transition-all duration-300 ${className}`;
+  const baseButtonClassName = isHeaderButton
+    ? "border-black border text-black hover:opacity-50 text-xl py-2 px-6 transition-all duration-300"
+    : ``;
 
   // Define the class name for the dynamic background button style
-  const dynamicBackgroundButtonClassName = `text-xl text-white border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here
+  const dynamicBackgroundButtonClassName = `text-xl text-black bg-white border-purple border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here
 
   // Check if linkType is "URL" and URL is provided
   if (link.linkType === "URL" && link.url) {

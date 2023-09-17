@@ -35,13 +35,14 @@ export function renderButtons(
     switch (backgroundColorClass) {
       case "bg-white":
         buttonStyleClass = "text-black";
-        buttonBorderStyleClass = "border-purple";
+        buttonBorderStyleClass = "border-black";
         break;
       case "bg-black":
-        buttonStyleClass = "text-white";
+        buttonStyleClass = "bg-black text-white";
+        buttonBorderStyleClass = "border-white";
         break;
       case "bg-purple":
-        buttonStyleClass = "bg-black text-white";
+        buttonStyleClass = "bg-black";
         buttonBorderStyleClass = "border-black";
         break;
       default:
@@ -51,7 +52,7 @@ export function renderButtons(
   } else {
     // Apply default styles for buttons on non-dynamic backgrounds
     buttonStyleClass = "text-black";
-    buttonBorderStyleClass = "border-purple";
+    buttonBorderStyleClass = "border-white";
   }
 
   if (numberOfCtas === "One CTA (Primary Button)") {
@@ -67,7 +68,8 @@ export function renderButtons(
             key="primaryButton"
             label={getButtonLabel(primaryButton)}
             link={primaryButton}
-            className={`${buttonStyleClass} ${buttonBorderStyleClass}`}
+            isDynamicBackground={isDynamicBackground}
+            className={`${buttonStyleClass} ${buttonBorderStyleClass} `}
           />
         </div>
       );
@@ -85,6 +87,7 @@ export function renderButtons(
             key="secondaryButton"
             label={getButtonLabel(secondaryButton)}
             link={secondaryButton}
+            isDynamicBackground={isDynamicBackground}
             className={`${buttonStyleClass} ${buttonBorderStyleClass}`}
           />
         </div>
@@ -99,6 +102,7 @@ export function renderButtons(
           key="primaryButton"
           label={getButtonLabel(primaryButton)}
           link={primaryButton}
+          isDynamicBackground={isDynamicBackground}
           className={`${buttonStyleClass} ${buttonBorderStyleClass}`}
         />
       );
@@ -109,7 +113,8 @@ export function renderButtons(
           key="secondaryButton"
           label={getButtonLabel(secondaryButton)}
           link={secondaryButton}
-          className={`${buttonStyleClass} ${buttonBorderStyleClass}`}
+          isDynamicBackground={isDynamicBackground}
+          className={`${buttonStyleClass} ${buttonBorderStyleClass} `}
         />
       );
     }

@@ -23,7 +23,7 @@ function Hero({ data }) {
         {renderButtons(
           hero?.ctaButtons,
           numberOfCtas,
-          true, // isDynamicBackground
+          false, // isDynamicBackground
           true // isHero prop
         )}
         </div>
@@ -34,7 +34,6 @@ function Hero({ data }) {
           <CustomImage
             src={hero.image.sourceUrl}
             alt={hero.image.altText}
-            layout="responsive"
             width={1920}
             height={500}
             className="w-full"

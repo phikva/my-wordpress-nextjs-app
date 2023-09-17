@@ -21,10 +21,16 @@ query GetFooterData {
         navigationUrl
       }
       socialMediaLinks {
-        iconsocialMediaUrl
-        socialMediaIcon {
-          altText
-          sourceUrl
+        toggle
+        textLink {
+          iconsocialMediaUrl
+          textSocial
+        }
+        icons {
+          iconsocialMediaUrl
+          socialMediaIcon {
+            id
+          }
         }
       }
     }

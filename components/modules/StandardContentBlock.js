@@ -28,9 +28,9 @@ function StandardContentBlock({ data }) {
         case "Light":
           return "bg-white";
         case "Dark":
-          return "bg-black";
+          return "bg-black-light";
         case "Color":
-          return "bg-blue";
+          return "bg-purple";
         default:
           return ""; // Default to no background color
       }
@@ -43,7 +43,7 @@ function StandardContentBlock({ data }) {
     // Define a function to get the text color class based on the background color
     const getTextColorClass = (backgroundColorClass) => {
       // If the background color is 'bg-black', set the text color to 'text-white'
-      if (backgroundColorClass === "bg-black") {
+      if (backgroundColorClass === "bg-black-light") {
         return "text-white";
       }
       if (backgroundColorClass === "bg-white") {
@@ -85,7 +85,7 @@ function StandardContentBlock({ data }) {
     const buttons = renderButtons(
       ctaButtons,
       numberOfCtas,
-      true,
+      true, // isDynamicBackground
       backgroundColorClass,
       contentBlock.chooseContentLayout
     );
@@ -103,8 +103,8 @@ function StandardContentBlock({ data }) {
                   <CustomImage
                     src={contentBlock.leftAligned.image.sourceUrl}
                     alt={contentBlock.leftAligned.image.altText}
-                    height={500}
-                    width={500}
+                    height={800}
+                    width={800}
                     // layout="responsive"
                     className="w-full"
                   />
@@ -139,8 +139,8 @@ function StandardContentBlock({ data }) {
                   <CustomImage
                     src={contentBlock.rightAligned.image.sourceUrl}
                     alt={contentBlock.rightAligned.image.altText}
-                    height={500}
-                    width={500}
+                    height={800}
+                    width={800}
                     // layout="responsive"
                     className="w-full"
                   />
@@ -166,16 +166,16 @@ function StandardContentBlock({ data }) {
       case "Center aligned":
         return (
           <div
-            className={`content-block flex flex-col items-center gap-x-10 gap-y-20 px-4 py-12 md:py-20 lg:py-48"  ${backgroundColorClass}`}
+            className={`content-block flex flex-col items-center gap-x-10 gap-y-10 px-4 py-12 md:py-20 lg:py-48"  ${backgroundColorClass}`}
             key={contentBlock.id}
           >
-            <div className="lg:w-1/3 order-2">
+            <div className=" order-2">
               {shouldRenderImage && (
                 <CustomImage
                   src={contentBlock.centerAligned.image.sourceUrl}
                   alt={contentBlock.centerAligned.image.altText}
-                  height={500}
-                  width={500}
+                  height={800}
+                    width={800}
                   // layout="responsive"
                   className="mx-auto"
                 />

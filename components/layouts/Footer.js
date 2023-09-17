@@ -8,13 +8,13 @@ function Footer({ footerData }) {
   const footer = footerData?.page.footer || {}; // Access the footer object
 
   // Helper function to select logo
-  const { selectedLogoFooter, altTextFooter } = getSelectedLogo({},footerData);
-
+  const { selectedLogoFooter, altTextFooter } = getSelectedLogo({}, footerData);
+console.log(footer.socialMediaLinks);
   return (
-    <footer className="bg-black py-16 px-4">
-      <div className="mx-auto flex flex-col gap-8 max-w-8xl">
-        <div className="grid grid-cols-2 gap-10">
-          <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
+    <footer className="bg-black flex flex-row py-16 px-4 lg:px-0">
+      <div className="gap-8 mx-auto max-w-8xl">
+        <div className="flex flex-col lg:flex-row gap-10">
+          <div className="w-full mb-6 lg:mb-0">
             {selectedLogoFooter && (
               <Link href="/">
                 <Image
@@ -26,10 +26,10 @@ function Footer({ footerData }) {
               </Link>
             )}
           </div>
-          <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
+          <div className="w-full mb-6 lg:mb-0">
             {footer.footerNavigation && (
               <nav className="text-white">
-                <ul className="flex flex-col lg:flex-row lg:gap-5">
+                <ul className="flex flex-col flex-wrap lg:flex-row lg:gap-5">
                   {footer.footerNavigation.map((item, index) => (
                     <li key={index} className="mb-2">
                       <Link
@@ -44,34 +44,44 @@ function Footer({ footerData }) {
               </nav>
             )}
           </div>
-          <div className="w-full lg:w-1/3">
-            <div className="text-white mt-10 text-xl md:text-3xl ">
+          <div className="w-full">
+            <div className="text-white text-xl md:text-3xl ">
               {footer.companyInformation}
             </div>
-            <div className="text-white mb-6">
-              {footer.newsletterSignupForm}
-            </div>
+            <div className="text-white mb-6">{footer.newsletterSignupForm}</div>
           </div>
         </div>
-        <div className="text-white grid grid-cols-2 pt-10">
-          <div className="flex">
+        <div className="text-white flex flex-col lg:grid grid-cols-3 pt-10 gap-10">
+          <div className="flex flex-col">
             {footer.socialMediaLinks &&
               footer.socialMediaLinks.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.iconsocialMediaUrl}
-                  className="mr-4 hover:text-gray-400 transition-colors"
-                >
-                  <CustomImage
-                    src={item.socialMediaIcon.sourceUrl}
-                    alt={item.socialMediaIcon.altText}
-                    height={30}
-                    width={30}
-                  />
-                </Link>
+                <React.Fragment key={index}>
+                  {item.toggle === "Text" &&
+                  item.textLink.iconsocialMediaUrl ? (
+                    <span className="mr-4 hover:text-gray-400 transition-colors">
+                      <Link href={item.textLink.iconsocialMediaUrl}>
+                        <span className="text-3xl md:text-5xl">
+                          {item.textLink.textSocial}
+                        </span>
+                      </Link>
+                    </span>
+                  ) : item.iconsocialMediaUrl ? (
+                    <span className="mr-4 hover:text-gray-400 transition-colors">
+                      <Link href={item.iconsocialMediaUrl}>
+                        <CustomImage
+                          src={item.socialMediaIcon?.sourceUrl}
+                          alt={item.socialMediaIcon?.altText}
+                          height={30}
+                          width={30}
+                        />
+                      </Link>
+                    </span>
+                  ) : null}
+                </React.Fragment>
+                
               ))}
           </div>
-          <div className="copyright-trademark text-xl md:text-3xl">
+          <div className="flex items-end text-xl md:text-3xl">
             {footer.copyrightTrademarkText}
           </div>
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import NextImage from "next/image";
 
-function CustomImage({ src, alt, layout, width, height }) {
+function CustomImage({ src, alt, width, height }) {
   return (
-    <NextImage src={src} alt={alt} layout={layout} width={width} height={height} />
+    <NextImage src={src} alt={alt}  width={width} height={height} />
   );
 }
 

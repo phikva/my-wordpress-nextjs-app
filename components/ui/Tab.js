@@ -15,7 +15,7 @@ function Tab({
 
   return (
     <div
-      className={`cursor-pointer flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
+      className={`cursor-pointer border flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
         tabBackgroundColorClass // Apply the provided tab background color class
       } ${
         isActive ? tabBackgroundColorClass : backgroundColorClass // Apply the provided text color class

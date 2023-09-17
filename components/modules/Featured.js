@@ -15,20 +15,20 @@ function Featured({ data }) {
 
   switch (featuredSection.chooseBackgroundColor) {
     case "Light":
-      backgroundColorClass = "bg-white";
+      backgroundColorClass = "bg-white-light";
       textColorClass = "text-black";
-      tabBackgroundColorClass = "bg-blue";
+      tabBackgroundColorClass = "bg-white";
       break;
     case "Dark":
-      backgroundColorClass = "bg-black";
+      backgroundColorClass = "bg-black-light";
       textColorClass = "text-white";
-      tabBackgroundColorClass = "bg-black-light";
+      tabBackgroundColorClass = "bg-black";
       
       break;
     case "Color":
-      backgroundColorClass = "bg-blue-dark";
-      textColorClass = "text-black";
-      tabBackgroundColorClass = "bg-blue";
+      backgroundColorClass = "bg-purple";
+      textColorClass = "text-white";
+      tabBackgroundColorClass = "bg-black-light";
      
       break;
     default:

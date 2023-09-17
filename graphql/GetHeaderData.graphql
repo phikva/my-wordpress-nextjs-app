@@ -43,10 +43,11 @@ query GetHeaderData($uri: String = "/") {
       }
     }
   }
-    page(id: "cG9zdDo3") {
+  # get the footer data
+      
+  page(id: "cG9zdDo3") {
     id
     title
-    # get the footer data
     footer {
       companyInformation
       copyrightTrademarkText
@@ -66,12 +67,19 @@ query GetHeaderData($uri: String = "/") {
         navigationUrl
       }
       socialMediaLinks {
-        iconsocialMediaUrl
-        socialMediaIcon {
-          altText
-          sourceUrl
+        toggle
+        textLink {
+          iconsocialMediaUrl
+          textSocial
+        }
+        icons {
+          iconsocialMediaUrl
+          socialMediaIcon {
+            id
+          }
         }
       }
     }
   }
-}
+  }
+
