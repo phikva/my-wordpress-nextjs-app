@@ -1,15 +1,14 @@
 import React from "react";
 import CustomImage from "../modules/CustomImage";
-// Import the utility function
-import { renderButtons } from "../../utils/ButtonUtils";
+// import helper functions
+import {
+  renderButtons,
+  getBackgroundColorClass,
+  getTextColorClass,
+} from "../../utils/ButtonUtils";
 
 function StandardContentBlock({ data }) {
   const contentBlockData = data || {};
-
-  // Check if toggleContentBlock is set to "Show"
-  if (contentBlockData?.toggleContentBlock !== "Show") {
-    return null; // Don't render anything if not set to "Show"
-  }
 
   // Access the array of content blocks
   const contentBlocks = contentBlockData?.contentBlock || [];
@@ -22,41 +21,11 @@ function StandardContentBlock({ data }) {
       contentBlock.rightAligned?.image?.sourceUrl ||
       contentBlock.centerAligned?.image?.sourceUrl;
 
-    // Define a function to get the background color class based on the chooseBackgroundColor
-    const getBackgroundColorClass = (chooseBackgroundColor) => {
-      switch (chooseBackgroundColor) {
-        case "Light":
-          return "bg-white";
-        case "Dark":
-          return "bg-black-light";
-        case "Color":
-          return "bg-purple";
-        default:
-          return ""; // Default to no background color
-      }
-    };
-
+      // Get the background color class based on chooseBackgroundColor
     const backgroundColorClass = getBackgroundColorClass(
       contentBlock.chooseBackgroundColor
     );
-
-    // Define a function to get the text color class based on the background color
-    const getTextColorClass = (backgroundColorClass) => {
-      // If the background color is 'bg-black', set the text color to 'text-white'
-      if (backgroundColorClass === "bg-black-light") {
-        return "text-white";
-      }
-      if (backgroundColorClass === "bg-white") {
-        return "text-black";
-      }
-      if (backgroundColorClass === "bg-purple") {
-        return "text-white";
-      }
-
-      // For other background colors, use the default text color
-      return "text-gray-700";
-    };
-
+      // Get the text color class based on background color
     const textColorClass = getTextColorClass(backgroundColorClass);
 
     // Initialize variables to store the ctaButtons and numberOfCtas
@@ -105,7 +74,6 @@ function StandardContentBlock({ data }) {
                     alt={contentBlock.leftAligned.image.altText}
                     height={800}
                     width={800}
-                    // layout="responsive"
                     className="w-full"
                   />
                 )}
@@ -141,7 +109,6 @@ function StandardContentBlock({ data }) {
                     alt={contentBlock.rightAligned.image.altText}
                     height={800}
                     width={800}
-                    // layout="responsive"
                     className="w-full"
                   />
                 )}
@@ -175,8 +142,7 @@ function StandardContentBlock({ data }) {
                   src={contentBlock.centerAligned.image.sourceUrl}
                   alt={contentBlock.centerAligned.image.altText}
                   height={800}
-                    width={800}
-                  // layout="responsive"
+                  width={800}
                   className="mx-auto"
                 />
               )}

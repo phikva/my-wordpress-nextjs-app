@@ -2,6 +2,36 @@ import React from "react";
 import Button from "../components/ui/Button";
 import ButtonSecondary from "../components/ui/ButtonSecondary";
 
+// Utility function to get background color class based on chooseBackgroundColor
+function getBackgroundColorClass(chooseBackgroundColor) {
+  switch (chooseBackgroundColor) {
+    case "Light":
+      return "bg-white";
+    case "Dark":
+      return "bg-black-light";
+    case "Color":
+      return "bg-purple";
+    default:
+      return "bg-purple";
+  }
+}
+
+// Utility function to get text color class based on background color
+function getTextColorClass(backgroundColorClass) {
+  if (backgroundColorClass === "bg-black-light") {
+    return "text-white";
+  }
+  if (backgroundColorClass === "bg-white") {
+    return "text-black";
+  }
+  if (backgroundColorClass === "bg-purple") {
+    return "text-white";
+  }
+  return "text-gray-700";
+}
+
+export { getBackgroundColorClass, getTextColorClass };
+
 export function renderButtons(
   buttons,
   numberOfCtas,
