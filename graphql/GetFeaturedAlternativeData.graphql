@@ -1,0 +1,25 @@
+query GetFeaturedAlternativeData($uri: String = "/") {
+  pageBy(uri: $uri) {
+    id
+    uri
+    featuredAlternative {
+      toggleFeatured
+      featuredSectionAlternative {
+        chooseBackgroundColor
+        header
+        subheader
+        tabGroup {
+          content {
+            tabName
+            tabHeader
+            tabText
+            tabImage {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+}

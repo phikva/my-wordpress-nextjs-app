@@ -11,11 +11,11 @@ module.exports = {
     colors: {
       'white': '#f2f2f2',
       'white-light': '#ffffff',
-      'blue': '#C2EFFF',
+      'blue': '#0087B8',
       'purple': '#7B6D8D',
       'gray': '#F2F4F7',
       'gray-light': '#F5F5F5',
-      'black': '#191C24',
+      'black': '#222630',
       'black-light': '#111318',
     },
     container: {

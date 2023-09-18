@@ -2,6 +2,31 @@ import React from "react";
 import Button from "../components/ui/Button";
 import ButtonSecondary from "../components/ui/ButtonSecondary";
 
+// Utility function to get background color class based on chooseBackgroundColor
+function getBackgroundColorClass(chooseBackgroundColor) {
+  switch (chooseBackgroundColor) {
+    case "Light":
+      return "bg-white-light";
+    case "Dark":
+      return "bg-black-light";
+    default:
+      return "bg-white";
+  }
+}
+
+// Utility function to get text color class based on background color
+function getTextColorClass(backgroundColorClass) {
+  if (backgroundColorClass === "bg-black-light") {
+    return "text-white";
+  }
+  if (backgroundColorClass === "bg-white-light") {
+    return "text-black";
+  }
+  return "text-gray-700";
+}
+
+export { getBackgroundColorClass, getTextColorClass };
+
 export function renderButtons(
   buttons,
   numberOfCtas,
@@ -30,6 +55,7 @@ export function renderButtons(
     buttonStyleClass = "justify-center"; // Use "justify-center" class
   }
 
+  // Check if the background is dynamic
   if (isDynamicBackground) {
     // Apply different styles for buttons on dynamic backgrounds
     switch (backgroundColorClass) {
@@ -38,12 +64,8 @@ export function renderButtons(
         buttonBorderStyleClass = "border-black";
         break;
       case "bg-black":
-        buttonStyleClass = "bg-black text-white";
-        buttonBorderStyleClass = "border-white";
-        break;
-      case "bg-purple":
         buttonStyleClass = "bg-black";
-        buttonBorderStyleClass = "border-black";
+        buttonBorderStyleClass = "border-white";
         break;
       default:
         // Handle other background colors or defaults if needed
