@@ -40,7 +40,7 @@ function Featured({ data }) {
     <section
       className={`py-10 md:py-28 flex justify-center ${backgroundColorClass}`}
     >
-      <div className="flex flex-col gap-20 px-4 w-full max-w-7xl">
+      <div className="flex flex-col gap-5 md:gap-20 px-4 w-full max-w-7xl">
         <div className="text-center">
           <h2 className={`mb-10 max-w-2xl mx-auto ${textColorClass}`}>
             {featuredSection.header}
@@ -52,7 +52,7 @@ function Featured({ data }) {
 
         <div className="lg:flex flex-row gap-20 items-center justify-center">
           <div className="lg:w-1/2">
-            <div className="grid grid-cols-1 lg:grid-cols-1 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-1 gap-5 md:gap-10">
               {tabGroup.map((tab, index) => (
                 <Tab
                   key={index}

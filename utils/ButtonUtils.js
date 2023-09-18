@@ -148,7 +148,7 @@ export function renderButtons(
 
       return (
         <div
-          className={`flex flex-col gap-5 md:flex-row ${containerClassName}`}
+          className={`flex flex-col gap-3 md:flex-row ${containerClassName}`}
         >
           {renderedButtons}
         </div>

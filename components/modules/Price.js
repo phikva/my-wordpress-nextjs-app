@@ -12,8 +12,8 @@ function Price({ data }) {
     if (isNumeric(price)) {
       return (
         <div className="text-center">
-          <p className="opacity-60 text-black text-lg">from</p> <p className=" text-3xl font-bold">${parseFloat(price)}</p>
-          <p className="opacity-60 text-black text-lg">per month</p>{" "}
+          <p className="opacity-60 text-black md:text-lg">from</p> <p className=" text-3xl font-bold">${parseFloat(price)}</p>
+          <p className="opacity-60 text-black md:text-lg">per month</p>{" "}
         </div>
       );
     }
@@ -28,15 +28,15 @@ function Price({ data }) {
   }
 
   return (
-    <section className="px-4 flex flex-col gap-20 py-10 lg:py-28">
-      <div className="flex flex-col gap-10 text-center mx-auto max-w-md">
+    <section className="px-4 flex flex-col gap-10 md:gap-20 py-10 lg:py-28">
+      <div className="flex flex-col gap-5 text-center mx-auto max-w-md">
         <h2 className="">{data.headline}</h2>
         <p className="text-black">{data.subheadline}</p>
       </div>
       <div className="flex flex-row justify-center flex-wrap gap-10 md:gap-20 lg:gap-10 mx-auto">
         {pricingPlans.map((plan, index) => (
           <div
-            className="flex flex-col justify-between gap-10 max-w-xs border border-black border-opacity-20 p-6"
+            className="flex flex-col justify-between gap-5 md:gap-8 max-w-xs border border-black border-opacity-20 p-6"
             key={index}
           >
             <h3 className="font-bold text-center">{plan.planName}</h3>
@@ -47,7 +47,7 @@ function Price({ data }) {
             {renderPrice(plan.price)}
             <ul className="flex flex-col gap-3">
               {plan.benefits.map((benefit, i) => (
-                <li key={i}>
+                <li className="opacity-80" key={i}>
                   <DynamicIcon color="#7B6D8D" icon={faCircleCheck} /> {benefit.benefitItem}
                 </li>
               ))}

@@ -64,7 +64,7 @@ function FeaturedAlternative({ data }) {
       <div
         className={`flex flex-col gap-6 md:gap-16  md:grid md:grid-cols-2 ${backgroundColorClass}`}
       >
-        <div className="flex order-1 justify-center md:col-span-2">
+        <div className="flex order-1 justify-center text-center md:col-span-2">
           <h2 className={` ${textColorClass}`}>
             {tabGroup[selectedTab]?.content.tabHeader}
           </h2>

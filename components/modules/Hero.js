@@ -12,7 +12,7 @@ function Hero({ data }) {
   return (
     <section className="py-10 px-5 md:py-28 flex flex-col justify-center gap-10">
       <div className="flex flex-col xl:px-6 w-full max-w-8xl mx-auto gap-6">
-        <h1 className="mb-4 max-w-2xl lg:max-w-5xl">
+        <h1 className="mb-4 font-medium max-w-2xl lg:max-w-5xl">
           {hero?.mainHeadline}
         </h1>
         <p className="md:max-w-2xl">

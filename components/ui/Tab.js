@@ -16,7 +16,7 @@ function Tab({
 
   return (
     <div
-      className={`cursor-pointer ${borderClass} rounded-xl flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
+      className={`cursor-pointer ${borderClass} rounded-xl flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-5 md:p-10  ${
         tabBackgroundColorClass // Apply the provided tab background color class
       } ${
         isActive ? tabBackgroundColorClass : backgroundColorClass // Apply the provided text color class
@@ -24,7 +24,7 @@ function Tab({
       onClick={onClick}
     >
       <div className={`flex justify-between items-center`}>
-        <div className={`text-3xl font-normal mb-2 ${textColorClass}`}>
+        <div className={`text-2xl md:text-3xl font-normal mb-2 ${textColorClass}`}>
           {tabData.tabHeader}
         </div>
         <div className={`text-lg ${textColorClass}`}>
@@ -40,7 +40,7 @@ function Tab({
       <p
         className={` ${
           isActive ? "block" : "hidden"
-        } ${textColorClass} text-xl font-normal opacity-70`}
+        } ${textColorClass} text-base md:text-lg font-normal opacity-70`}
       >
         {tabData.tabText}
       </p>
