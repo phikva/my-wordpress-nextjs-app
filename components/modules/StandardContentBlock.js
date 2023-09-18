@@ -85,7 +85,7 @@ function StandardContentBlock({ data }) {
                   {contentBlock.leftAligned.headline}
                 </h2>
                 <p
-                  className={`${textColorClass} font-normal pb-8 lg-pb-0`}
+                  className={`${textColorClass} font-normal pb-4 lg-pb-0`}
                 >
                   {contentBlock.leftAligned.subheader}
                 </p>
@@ -120,7 +120,7 @@ function StandardContentBlock({ data }) {
                   {contentBlock.rightAligned.headline}
                 </h2>
                 <p
-                  className={`${textColorClass}font-normal pb-8 lg-pb-0`}
+                  className={`${textColorClass} font-normal pb-4 lg-pb-0`}
                 >
                   {contentBlock.rightAligned.subheader}
                 </p>
@@ -154,7 +154,7 @@ function StandardContentBlock({ data }) {
                 {contentBlock.centerAligned.headline}
               </h2>
               <p
-                className={`${textColorClass} font-normal pb-8 lg-pb-0 max-w-2xl mx-auto`}
+                className={`${textColorClass} font-normal pb-4lg-pb-0 max-w-2xl mx-auto`}
               >
                 {contentBlock.centerAligned.subheader}
               </p>

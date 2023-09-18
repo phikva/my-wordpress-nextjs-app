@@ -10,6 +10,7 @@ query GetFeaturedAlternativeData($uri: String = "/") {
         subheader
         tabGroup {
           content {
+            tabName
             tabHeader
             tabText
             tabImage {

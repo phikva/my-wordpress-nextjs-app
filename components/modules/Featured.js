@@ -11,25 +11,20 @@ function Featured({ data }) {
   let backgroundColorClass = "";
   let textColorClass = "";
   let tabBackgroundColorClass = "";
- 
+  let borderClass = "";
 
   switch (featuredSection.chooseBackgroundColor) {
     case "Light":
       backgroundColorClass = "bg-white-light";
       textColorClass = "text-black";
       tabBackgroundColorClass = "bg-white";
+      borderClass = "border-black border border-opacity-20";
       break;
     case "Dark":
       backgroundColorClass = "bg-black-light";
       textColorClass = "text-white";
       tabBackgroundColorClass = "bg-black";
-      
-      break;
-    case "Color":
-      backgroundColorClass = "bg-purple";
-      textColorClass = "text-white";
-      tabBackgroundColorClass = "bg-black-light";
-     
+      borderClass = "border-white border border-opacity-20";
       break;
     default:
       backgroundColorClass = "";
@@ -42,13 +37,15 @@ function Featured({ data }) {
   };
 
   return (
-    <section className={`py-10 md:py-28 flex justify-center ${backgroundColorClass}`}>
+    <section
+      className={`py-10 md:py-28 flex justify-center ${backgroundColorClass}`}
+    >
       <div className="flex flex-col gap-20 px-4 w-full max-w-7xl">
         <div className="text-center">
-          <h2 className={`mb-10 ${textColorClass}`}>
+          <h2 className={`mb-10 max-w-2xl mx-auto ${textColorClass}`}>
             {featuredSection.header}
           </h2>
-          <p className={`mb-6 max-w-lg mx-auto ${textColorClass}`}>
+          <p className={`mb-6 max-w-lg mx-auto opacity-70 ${textColorClass}`}>
             {featuredSection.subheader}
           </p>
         </div>
@@ -65,6 +62,7 @@ function Featured({ data }) {
                   backgroundColorClass={backgroundColorClass}
                   textColorClass={textColorClass}
                   tabBackgroundColorClass={tabBackgroundColorClass}
+                  borderClass={borderClass}
                 />
               ))}
             </div>

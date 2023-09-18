@@ -9,13 +9,14 @@ function Tab({
   backgroundColorClass,
   textColorClass,
   tabBackgroundColorClass,
+  borderClass,
 
 }) {
   const iconColor = isActive ? textColorClass : backgroundColorClass; // Define the icon color based on isActive
 
   return (
     <div
-      className={`cursor-pointer border flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
+      className={`cursor-pointer ${borderClass} rounded-xl flex flex-col overflow-hidden transition-colors duration-150 gap-5 p-10  ${
         tabBackgroundColorClass // Apply the provided tab background color class
       } ${
         isActive ? tabBackgroundColorClass : backgroundColorClass // Apply the provided text color class
@@ -39,7 +40,7 @@ function Tab({
       <p
         className={` ${
           isActive ? "block" : "hidden"
-        } ${textColorClass} text-xl font-normal`}
+        } ${textColorClass} text-xl font-normal opacity-70`}
       >
         {tabData.tabText}
       </p>

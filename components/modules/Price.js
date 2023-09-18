@@ -33,7 +33,7 @@ function Price({ data }) {
         <h2 className="">{data.headline}</h2>
         <p className="text-black">{data.subheadline}</p>
       </div>
-      <div className="flex flex-row justify-center flex-wrap gap-20 lg:gap-10 mx-auto">
+      <div className="flex flex-row justify-center flex-wrap gap-10 md:gap-20 lg:gap-10 mx-auto">
         {pricingPlans.map((plan, index) => (
           <div
             className="flex flex-col justify-between gap-10 max-w-xs border border-black border-opacity-20 p-6"
@@ -48,7 +48,7 @@ function Price({ data }) {
             <ul className="flex flex-col gap-3">
               {plan.benefits.map((benefit, i) => (
                 <li key={i}>
-                  <DynamicIcon icon={faCircleCheck} /> {benefit.benefitItem}
+                  <DynamicIcon color="#7B6D8D" icon={faCircleCheck} /> {benefit.benefitItem}
                 </li>
               ))}
             </ul>

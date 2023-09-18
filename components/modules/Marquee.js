@@ -22,9 +22,9 @@ function Marquee({ data }) {
     <section className="px-4 py-10 md:py-20 lg:py-20">
       {toggleText === "Show" && (
         <div className="pb-10 max-w-5xl mx-auto">
-          <h3 className="text-center text-black opacity-80">
+          <h4 className="text-center text-black opacity-80">
             {data.header}
-          </h3>
+          </h4>
         </div>
       )}
 
