@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import CustomImage from "../modules/CustomImage";
+import CustomImage from "./CustomImage";
 import Tab from "../ui/Tab";
 
-function Featured({ data }) {
-  const featuredSection = data?.featuredSection || [];
-  const tabGroup = featuredSection.tabGroup || [];
+function FeaturedAlternative({ data }) {
+  const featuredSectionAlternative = data?.featuredSectionAlternative || [];
+  const tabGroup = featuredSectionAlternative?.tabGroup || [];
   const [selectedTab, setSelectedTab] = useState(0);
+  console.log(featuredSectionAlternative)
 
   // Determine the background color class based on the user's selection
   let backgroundColorClass = "";
@@ -13,7 +14,7 @@ function Featured({ data }) {
   let tabBackgroundColorClass = "";
  
 
-  switch (featuredSection.chooseBackgroundColor) {
+  switch (featuredSectionAlternative?.chooseBackgroundColor) {
     case "Light":
       backgroundColorClass = "bg-white-light";
       textColorClass = "text-black";
@@ -46,10 +47,10 @@ function Featured({ data }) {
       <div className="flex flex-col gap-20 px-4 w-full max-w-7xl">
         <div className="text-center">
           <h2 className={`mb-10 ${textColorClass}`}>
-            {featuredSection.header}
+            {featuredSectionAlternative.header}
           </h2>
           <p className={`mb-6 max-w-lg mx-auto ${textColorClass}`}>
-            {featuredSection.subheader}
+            {featuredSectionAlternative.subheader}
           </p>
         </div>
 
@@ -86,4 +87,4 @@ function Featured({ data }) {
   );
 }
 
-export default Featured;
+export default FeaturedAlternative;

@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import Hero from "./Hero";
 import Marquee from "./Marquee";
 import Featured from "./Featured";
+import FeaturedAlternative from "./FeaturedAlternative";
 import StandardContentBlock from "./StandardContentBlock";
 import FlexibleLayout from "./FlexibleLayout";
 import Price from "./Price";
@@ -16,6 +17,7 @@ import { GetFeaturedData } from "../../graphql/GetFeaturedData.graphql";
 import { GetStandardContentBlock } from "../../graphql/GetStandardContentBlock.graphql";
 import { GetFlexibleLayout } from "../../graphql/GetFlexibleLayout.graphql";
 import { GetPricingData } from "../../graphql/GetPricingData.graphql";
+import { GetFeaturedAlternativeData } from "../../graphql/GetFeaturedAlternativeData.graphql";
 
 //import the context
 import { useModuleContext } from "../../context/ModuleContext";
@@ -54,6 +56,13 @@ function ACFModule({ moduleTypes, router }) {
   });
 
   const {
+    data: featuredAlternativeData,
+    loading: featuredAlternativdLoading,
+    error: featuredAlternativError,
+  } = useQuery(GetFeaturedAlternativeData, {
+    variables: { uri: currentPageURI },
+  });
+  const {
     data: contentBlockData,
     loading: contentBlockLoading,
     error: contentBlockError,
@@ -76,7 +85,7 @@ function ACFModule({ moduleTypes, router }) {
     variables: { uri: currentPageURI },
   });
 
-  console.log(pricingData?.pageBy?.pricing.toggle); // Log the data before passing it to PriceComponent
+
 
   // helper function to get user toggle value for each module
   const userHeroToggle = getUserToggle(heroData, "hero", "toggleHeroSection");
@@ -88,6 +97,11 @@ function ACFModule({ moduleTypes, router }) {
   const userFeaturedToggle = getUserToggle(
     featuredData,
     "featured",
+    "toggleFeatured"
+  );
+  const userFeaturedAlternativeToggle = getUserToggle(
+    featuredAlternativeData,
+    "featuredAlternative",
     "toggleFeatured"
   );
   const userContentBlockToggle = getUserToggle(
@@ -144,6 +158,17 @@ function ACFModule({ moduleTypes, router }) {
             );
           }
           break;
+          case "featuredAlternative":
+            // Check if "featured" module should be displayed
+            if (
+              moduleType === "featuredAlternative" &&
+              (userFeaturedAlternativeToggle === "Show" || moduleStates.featuredAlternative === "Show")
+            ) {
+              renderedModules.push(
+                <FeaturedAlternative key="featuredAlternative" data={featuredAlternativeData?.pageBy?.featuredAlternative} />
+              );
+            }
+            break;
         case "contentBlock":
           // Check if "contentBlock" module should be displayed
           if (
