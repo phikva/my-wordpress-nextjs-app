@@ -5,6 +5,30 @@ query GetFlexibleLayout($uri: String = "/") {
     pageContent {
       togglePage
       flexibleContent {
+           ... on Page_Pagecontent_FlexibleContent_Price {
+          fieldGroupName
+          headline
+          subheadline
+          toggle
+          pricingPlans {
+            planName
+            price
+            planDescription
+            benefits {
+              benefitItem
+            }
+            cta {
+              button
+              linkType
+              pageLink {
+                ... on Page {
+                  id
+                  uri
+                }
+              }
+            }
+          }
+        }
         ... on Page_Pagecontent_FlexibleContent_FeaturedBlock {
           fieldGroupName
           toggleFeatured
@@ -17,6 +41,26 @@ query GetFlexibleLayout($uri: String = "/") {
               content {
                 tabText
                 tabHeader
+                tabImage {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+         ... on Page_Pagecontent_FlexibleContent_FeaturedAlternativeBlock {
+          fieldGroupName
+          toggleFeatured
+          featuredSectionAlternative {
+            chooseBackgroundColor
+            header
+            subheader
+            tabGroup {
+              content {
+                tabHeader
+                tabName
+                tabText
                 tabImage {
                   altText
                   sourceUrl
@@ -88,8 +132,8 @@ query GetFlexibleLayout($uri: String = "/") {
               }
             }
             video {
-              altText
-              sourceUrl
+              caption
+          mediaItemUrl
             }
           }
           toggleHeroSection

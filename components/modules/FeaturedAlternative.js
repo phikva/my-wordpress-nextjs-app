@@ -70,7 +70,7 @@ function FeaturedAlternative({ data }) {
           </h2>
         </div>
         <div className="flex order-3 md:order-2 md:col-start-1 max-w-md">
-          <p className={` ${textColorClass}`}>
+          <p className={` opacity-80 leading-normal ${textColorClass}`}>
             {tabGroup[selectedTab]?.content.tabText}
           </p>
         </div>

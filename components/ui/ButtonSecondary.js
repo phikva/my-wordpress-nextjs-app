@@ -7,19 +7,18 @@ function ButtonSecondary({
   className = "",
   isDynamicBackground = true,
   isHeaderButton = false,
-  backgroundColorClass = "", // Add backgroundColorClass prop
+  backgroundColorClass = "",
 }) {
-  // Define the class name for the base button style
   const baseButtonClassName = isHeaderButton
-    ? "border-black border text-black hover:opacity-50 text-xl py-3 px-6 transition-all duration-300"
+    ? "border-black border text-black font-semibold hover:opacity-50 text-xl py-3 px-6 transition-all duration-300"
     : ``;
 
-  // Define the class name for the dynamic background button style
-  const dynamicBackgroundButtonClassName = `text-medium border-purple bg-white border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here
+  const dynamicBackgroundButtonClassName = `font-semibold border-purple bg-white border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`;
 
-  // Check if linkType is "URL" and URL is provided
+  let buttonContent;
+
   if (link.linkType === "URL" && link.url) {
-    return (
+    buttonContent = (
       <Link
         href={link.url}
         className={
@@ -31,11 +30,12 @@ function ButtonSecondary({
         {label}
       </Link>
     );
-  }
-
-  // Check if linkType is "Page Link" and pageLink is provided
-  if (link.linkType === "Page Link" && link.pageLink && link.pageLink.uri) {
-    return (
+  } else if (
+    link.linkType === "Page Link" &&
+    link.pageLink &&
+    link.pageLink.uri
+  ) {
+    buttonContent = (
       <Link
         href={link.pageLink.uri}
         className={
@@ -47,17 +47,19 @@ function ButtonSecondary({
         {label}
       </Link>
     );
+  } else {
+    // If neither condition is met, render a disabled button
+    buttonContent = (
+      <button
+        className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
+        disabled
+      >
+        {label}
+      </button>
+    );
   }
 
-  // If neither condition is met, render a disabled button
-  return (
-    <Link
-      className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
-      disabled
-    >
-      {label}
-    </Link>
-  );
+  return buttonContent;
 }
 
 export default ButtonSecondary;

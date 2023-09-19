@@ -7,35 +7,24 @@ function Button({
   className = "",
   isHeaderButton = false,
   isDynamicBackground = false,
-  backgroundColorClass = "", // Add backgroundColorClass prop
+  backgroundColorClass = "",
 }) {
-  // Define the class name for the base button style
   const baseButtonClassName = isHeaderButton
-    ? "border-black border text-black hover:opacity-50 text-medium px-3 py-2 md:py-3 md:px-6 transition-all duration-300"
-    : `text-black border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className}`;
+    ? "border-black font-semibold border text-black hover:opacity-50 px-3 py-2 md:py-3 md:px-6 transition-all duration-300"
+    : `text-black font-semibold border-black border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className}`;
 
-  // Define the class name for the dynamic background button style
-  const dynamicBackgroundButtonClassName = `text-medium text-black bg-purple border-purple border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`; // Include backgroundColorClass here
+  const dynamicBackgroundButtonClassName = `text-black font-semibold bg-purple border-purple border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`;
 
-  // Check if linkType is "URL" and URL is provided
+  let buttonContent;
+
   if (link.linkType === "URL" && link.url) {
-    return (
-      <Link
-        href={link.url}
-        className={
-          isDynamicBackground
-            ? dynamicBackgroundButtonClassName
-            : baseButtonClassName
-        }
-      >
-        {label}
-      </Link>
-    );
-  }
-
-  // Check if linkType is "Page" and pageLink is provided
-  if (link.linkType === "Page Link" && link.pageLink && link.pageLink.uri) {
-    return (
+    buttonContent = <Link href={link.url}></Link>;
+  } else if (
+    link.linkType === "Page Link" &&
+    link.pageLink &&
+    link.pageLink.uri
+  ) {
+    buttonContent = (
       <Link
         href={link.pageLink.uri}
         className={
@@ -47,17 +36,19 @@ function Button({
         {label}
       </Link>
     );
+  } else {
+    // If neither condition is met, render a disabled button
+    buttonContent = (
+      <button
+        className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
+        disabled
+      >
+        {label}
+      </button>
+    );
   }
 
-  // If neither condition is met, render a disabled button
-  return (
-    <Link
-      className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
-      disabled
-    >
-      {label}
-    </Link>
-  );
+  return buttonContent;
 }
 
 export default Button;

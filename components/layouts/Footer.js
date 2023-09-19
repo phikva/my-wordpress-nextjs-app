@@ -11,7 +11,7 @@ function Footer({ footerData }) {
   const { selectedLogoFooter, altTextFooter } = getSelectedLogo({}, footerData);
 
   return (
-    <footer className="bg-black-light flex flex-row py-16 px-4">
+    <footer className="bg-white flex flex-row py-16 px-4">
       <div className="gap-8 mx-auto max-w-8xl">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="w-full mb-6 lg:mb-0">
@@ -28,7 +28,7 @@ function Footer({ footerData }) {
           </div>
           <div className="w-full mb-6 lg:mb-0">
             {footer.footerNavigation && (
-              <nav className="text-white">
+              <nav className="text-black">
                 <ul className="flex flex-col flex-wrap lg:flex-row lg:gap-5">
                   {footer.footerNavigation.map((item, index) => (
                     <li key={index} className="mb-2">
@@ -45,14 +45,14 @@ function Footer({ footerData }) {
             )}
           </div>
           <div className="w-full">
-            <div className="text-white text-xl md:text-3xl ">
+            <div className="text-black text-xl md:text-3xl ">
               {footer.companyInformation}
             </div>
             <div className="text-white mb-6">{footer.newsletterSignupForm}</div>
           </div>
         </div>
-        <div className="text-white flex flex-col lg:grid grid-cols-3 pt-10 gap-10">
-          <div className="flex flex-col">
+        <div className="text-black flex flex-col lg:grid grid-cols-3 pt-10 gap-10">
+          <div className="flex flex-col gap-4">
             {footer.socialMediaLinks &&
               footer.socialMediaLinks.map((item, index) => (
                 <React.Fragment key={index}>

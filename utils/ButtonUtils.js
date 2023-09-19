@@ -52,7 +52,7 @@ export function renderButtons(
   // Check if it's in the hero section and needs to be centered
   if (isHero && isCentered) {
     // Apply different styles for centered buttons in the hero section
-    buttonStyleClass = "justify-center"; // Use "justify-center" class
+    buttonStyleClass = "justify-center"; 
   }
 
   // Check if the background is dynamic
