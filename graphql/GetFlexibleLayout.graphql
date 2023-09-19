@@ -5,7 +5,7 @@ query GetFlexibleLayout($uri: String = "/") {
     pageContent {
       togglePage
       flexibleContent {
-           ... on Page_Pagecontent_FlexibleContent_Price {
+        ... on Page_Pagecontent_FlexibleContent_Price {
           fieldGroupName
           headline
           subheadline
@@ -49,7 +49,7 @@ query GetFlexibleLayout($uri: String = "/") {
             }
           }
         }
-         ... on Page_Pagecontent_FlexibleContent_FeaturedAlternativeBlock {
+        ... on Page_Pagecontent_FlexibleContent_FeaturedAlternativeBlock {
           fieldGroupName
           toggleFeatured
           featuredSectionAlternative {
@@ -133,7 +133,7 @@ query GetFlexibleLayout($uri: String = "/") {
             }
             video {
               caption
-          mediaItemUrl
+              mediaItemUrl
             }
           }
           toggleHeroSection

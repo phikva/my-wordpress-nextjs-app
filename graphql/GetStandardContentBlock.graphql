@@ -68,8 +68,6 @@ query GetStandardContentBlock($uri: String = "/") {
             }
           }
         }
-
-        
          rightAligned {
           numberOfCtas
           subheader

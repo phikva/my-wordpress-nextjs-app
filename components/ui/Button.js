@@ -43,7 +43,7 @@ function Button({
         className={`bg-gray-300 border text-gray-500 font-regular py-3 px-8 rounded-md cursor-not-allowed ${className}`}
         disabled
       >
-        {label}
+        Something went wrong
       </button>
     );
   }
