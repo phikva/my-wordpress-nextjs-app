@@ -18,7 +18,7 @@ function Hero({ data }) {
         <p className="md:max-w-2xl">
           {hero?.subheadline}
         </p>
-        <div className="">
+        <div className="mb-10">
         {/* Render buttons using the renderButtons utility */}
         {renderButtons(
           hero?.ctaButtons,

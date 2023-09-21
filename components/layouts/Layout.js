@@ -9,7 +9,7 @@ function Layout({ children }) {
   const { headerData, currentPath } = useHeader();
 
   return (
-    <div className="">
+    <>
       <Suspense fallback={<p>Loading header data...</p>}>
         {headerData && <Header headerData={headerData} />}
       </Suspense>
@@ -17,7 +17,7 @@ function Layout({ children }) {
       <Suspense fallback={<p>Loading footer...</p>}>
         {headerData && <Footer footerData={headerData} />}
       </Suspense>
-    </div>
+    </>
   );
 }
 
