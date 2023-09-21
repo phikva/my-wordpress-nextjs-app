@@ -6,7 +6,7 @@ import { getSelectedLogo } from "../../utils/selectLogoUtils";
 
 function Footer({ footerData }) {
   const footer = footerData?.page.footer || {}; // Access the footer object
-
+console.log(footer)
   // Helper function to select logo
   const { selectedLogoFooter, altTextFooter } = getSelectedLogo({}, footerData);
 

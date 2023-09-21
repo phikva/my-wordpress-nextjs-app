@@ -45,7 +45,7 @@ query GetHeaderData($uri: String = "/") {
   }
   # get the footer data
       
-  page(id: "cG9zdDo3") {
+  page(id: "cG9zdDozOA==") {
     id
     title
     footer {

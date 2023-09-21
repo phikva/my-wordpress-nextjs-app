@@ -33,8 +33,6 @@ function FlexibleLayout({ router }) {
   const flexibleContent =
     flexibleLayoutData?.pageBy?.pageContent?.flexibleContent || [];
 
-    console.log(flexibleContent)
-
   // Render modules based on their types
   const renderModule = (module) => {
     switch (module.__typename) {
