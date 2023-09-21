@@ -16,6 +16,7 @@ function ButtonSecondary({
   const dynamicBackgroundButtonClassName = `font-semibold border-purple bg-white border text-center hover:opacity-50 py-3 px-8 transition-all duration-300 ${className} ${backgroundColorClass}`;
 
   let buttonContent;
+  
 
   if (link.linkType === "URL" && link.url) {
     buttonContent = (

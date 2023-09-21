@@ -1,5 +1,6 @@
 import React from "react";
 import ACFModule from "../components/modules/AcfModule";
+import FlexibleLayout from "../components/modules/FlexibleLayout";
 
 function Homepage() {
   // Define an array of module types available on the homepage
@@ -7,7 +8,8 @@ function Homepage() {
 
   return (
     <>
-      <ACFModule moduleTypes={moduleTypes} />
+      {/* <ACFModule moduleTypes={moduleTypes} /> */}
+      <FlexibleLayout moduleTypes={moduleTypes}  />
     </>
   );
 }
